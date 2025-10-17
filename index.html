@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Untitled Spaceship Game</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="game">
+    <div id="score">0</div>
+    <div id="fps"></div>
+
+    <div id="toast"></div>
+
+    <div id="loading">
+        <div id="loading-title">Loading...</div>
+        <img id="loading-gif" src="" alt="A loading animation of three crescents spinning around a central axis."/>
+    </div>
+
+    <canvas id="game-canvas" width="800" height="400">
+        Your browser does not support HTML5 canvas.
+    </canvas>
+
+    <div id="sound-music">
+        <div id="sound-checkbox-div" class="checkbox-div">
+            <label for="sound-checkbox">Sound</label><input type="checkbox" id="sound-checkbox" checked/>
+        </div>
+
+        <div id="music-checkbox-div" class="checkbox-div">
+            <label for="music-checkbox">Music</label><input type="checkbox" id="music-checkbox" checked/>
+        </div>
+    </div>
+
+    <div id="instructions">
+        <div class="keys">
+            &larr; / a -
+            <div class="explanation">move left | </div>
+            &rarr; / d -
+            <div class="explanation">move right | </div>
+            &uarr; / w -
+            <div class="explanation">move up | </div>
+            &darr; / s -
+            <div class="explanation">move down</div>
+            <br>
+        </div>
+
+        <div class="keys">
+            z / j / space -
+            <div class="explanation">shoot | </div>
+            p / esc -
+            <div class="explanation">pause</div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="js/usg.js"></script>
+
+</html>

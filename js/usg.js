@@ -3,6 +3,7 @@ import("/js/sprites.js");
 let SpaceshipGame = function () {
     this.canvas = document.getElementById("game-canvas");
     this.context = this.canvas.getContext("2d");
+    this.keys = [];
 
     // HTML elements
     this.fpsElement = document.getElementById("fps");
@@ -38,6 +39,45 @@ let SpaceshipGame = function () {
     this.windowHasFocus = true;
     this.countdownInProgress = false;
     this.gameStarted = false;
+
+    // Sprites
+    this.sprites = [];
+
+    // Behaviors
+    this.playerMovement = {
+        setPosition: function (sprite, now, lastAnimationFrameTime) {
+            let pixelsToMoveX = (now - lastAnimationFrameTime) / 1000;
+            let pixelsToMoveY = (now - lastAnimationFrameTime) / 1000;
+
+            if (spaceshipGame.keys['a'] || spaceshipGame.keys['ArrowLeft'] || spaceshipGame.keys['d'] || spaceshipGame.keys['ArrowRight']) {
+                pixelsToMoveX *= sprite.velocityX;
+            }
+
+            if (spaceshipGame.keys['w'] || spaceshipGame.keys['ArrowUp'] || spaceshipGame.keys['s'] || spaceshipGame.keys['ArrowDown']) {
+                pixelsToMoveY *= sprite.velocityY;
+            }
+
+            if (spaceshipGame.keys['a'] || spaceshipGame.keys['ArrowLeft']) {
+                sprite.left -= pixelsToMoveX;
+            }
+
+            if (spaceshipGame.keys['d'] || spaceshipGame.keys['ArrowRight']) {
+                sprite.left += pixelsToMoveX;
+            }
+
+            if (spaceshipGame.keys['w'] || spaceshipGame.keys['ArrowUp']) {
+                sprite.top -= pixelsToMoveY;
+            }
+
+            if (spaceshipGame.keys['s'] || spaceshipGame.keys['ArrowDown']) {
+                sprite.top += pixelsToMoveY;
+            }
+        },
+
+        execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
+            this.setPosition(sprite, now, lastAnimationFrameTime);
+        }
+    }
 }
 
 SpaceshipGame.prototype = {
@@ -185,7 +225,46 @@ SpaceshipGame.prototype = {
     },
 
     createSprites: function () {
+        this.createPlayerSprite();
 
+        this.initializeSprites();
+
+        this.addSpritesToSpriteArray();
+    },
+
+    initializeSprites: function () {
+
+    },
+
+    addSpritesToSpriteArray: function () {
+
+    },
+
+    positionSprites: function (sprites, data) {
+        let sprite;
+
+        for (let i = 0; i < sprites.length; i++) {
+            sprite = sprites[i];
+
+            sprite.top = data[i].top;
+            sprite.left = data[i].left;
+        }
+    },
+
+    createPlayerSprite: function () {
+        let PLAYER_LEFT = 50;
+        let PLAYER_HEIGHT = 32;
+        let STARTING_HEIGHT = 200;
+
+        this.player = createSprite("sparrow_drone", 90, [this.playerMovement]);
+
+        this.player.y = STARTING_HEIGHT;
+        this.player.top = STARTING_HEIGHT - PLAYER_HEIGHT;
+        this.player.left = PLAYER_LEFT;
+        this.player.velocityX = 50;
+        this.player.velocityY = 50;
+
+        this.sprites.push(this.player);
     },
 
     drawBackground: function () {
@@ -212,7 +291,7 @@ SpaceshipGame.prototype = {
     animate: function (now) {
         if (spaceshipGame.paused) {
             setTimeout(function () {
-               requestAnimationFrame(spaceshipGame.animate);
+                requestAnimationFrame(spaceshipGame.animate);
             }, spaceshipGame.PAUSED_CHECK_INTERVAL);
         } else {
             spaceshipGame.fps = spaceshipGame.calculateFps(now);
@@ -223,7 +302,7 @@ SpaceshipGame.prototype = {
     },
 
     calculateFps: function (now) {
-        let fps = 1 / (now - this.lastAnimationFrameTime * 1000);
+        let fps = 1 / (now - this.lastAnimationFrameTime) * 1000;
 
         if (now - this.lastFpsUpdateTime > 1000) {
             this.lastFpsUpdateTime = now;
@@ -237,6 +316,50 @@ SpaceshipGame.prototype = {
         this.setOffsets(now);
 
         this.drawBackground();
+        this.updateSprites(now);
+        this.drawSprites();
+    },
+
+    updateSprites: function (now) {
+        let sprite;
+
+        for (let i = 0; i < this.sprites.length; i++) {
+            sprite = this.sprites[i];
+
+            if (sprite.visible && this.isSpriteInView(sprite)) {
+                sprite.update(now, this.fps, this.context, this.lastAnimationFrameTime);
+            }
+        }
+    },
+
+    isSpriteInView: function (sprite) {
+        return sprite.left + sprite.width > sprite.hOffset && sprite.left < sprite.hOffset + this.canvas.width;
+    },
+
+    drawSprites: function () {
+        let sprite;
+
+        for (let i = 0; i < this.sprites.length; i++) {
+            sprite = this.sprites[i];
+
+            if (sprite.visible && this.isSpriteInView(sprite)) {
+                this.context.translate(-sprite.hOffset, 0);
+                sprite.draw(this.context);
+                this.context.translate(sprite.hOffset, 0);
+            }
+        }
+    },
+
+    togglePaused: function () {
+        let now = +new Date();
+
+        this.paused = !this.paused;
+
+        if (this.paused) {
+            this.pauseStartTime = now;
+        } else {
+            this.lastAnimationFrameTime += (now - this.pauseStartTime);
+        }
     }
 };
 
@@ -246,7 +369,60 @@ window.onkeydown = function (event) {
     if (key === 'p') {
         spaceshipGame.togglePaused();
     }
+
+    spaceshipGame.keys[key] = true;
+};
+
+window.onkeyup = function (event) {
+    let key = event.key;
+
+    spaceshipGame.keys[key] = false
 }
+
+window.onblur = function (event) {
+    spaceshipGame.windowHasFocus = false;
+
+    if (!spaceshipGame.paused) {
+        spaceshipGame.togglePaused();
+    }
+};
+
+window.onfocus = function (event) {
+    let originalFont = spaceshipGame.toastElement.style.fontSize;
+    let DIGIT_DISPLAY_DURATION = 1000;
+
+    spaceshipGame.windowHasFocus = true;
+    spaceshipGame.countdownInProgress = true;
+
+    if (spaceshipGame.paused) {
+        spaceshipGame.toastElement.style.fontSize = '128px';
+
+        if (spaceshipGame.windowHasFocus && spaceshipGame.countdownInProgress) {
+            spaceshipGame.revealToast('3', 500);
+        }
+
+        setTimeout(function () {
+            if (spaceshipGame.windowHasFocus && spaceshipGame.countdownInProgress) {
+                spaceshipGame.revealToast('2', 500);
+            }
+
+            setTimeout(function () {
+                if (spaceshipGame.windowHasFocus && spaceshipGame.countdownInProgress) {
+                    spaceshipGame.revealToast('1', 500);
+                }
+
+                setTimeout(function () {
+                    if (spaceshipGame.windowHasFocus && spaceshipGame.countdownInProgress) {
+                        spaceshipGame.togglePaused();
+                        spaceshipGame.toastElement.style.fontSize = originalFont;
+                    }
+
+                    spaceshipGame.countdownInProgress = false;
+                }, DIGIT_DISPLAY_DURATION);
+            }, DIGIT_DISPLAY_DURATION);
+        }, DIGIT_DISPLAY_DURATION);
+    }
+};
 
 let spaceshipGame = new SpaceshipGame();
 

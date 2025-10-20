@@ -1547,8 +1547,12 @@ function createSprite(spriteName, rotation, behaviors) {
     let spriteCells = getSpriteCells(spriteName);
     let spriteRotation = rotation || 0;
     let behaviorList = behaviors || [];
+    let sprite = new Sprite(spriteName, new SpriteSheetArtist(spriteSheet, spriteCells, spriteRotation), behaviorList);
 
-    return new Sprite(spriteName, new SpriteSheetArtist(spriteSheet, spriteCells, spriteRotation), behaviorList);
+    sprite.height = sprite.artist.cells[0].height;
+    sprite.width = sprite.artist.cells[0].width;
+
+    return sprite;
 }
 
 function getSpriteCells(spriteName) {
@@ -1573,11 +1577,11 @@ function getSpriteCells(spriteName) {
     }
 
     if (jsonSpriteObject.frames != null) {
-        for (let i = 0; i < jsonSpriteObject.frames; ++i) {
-            let left = jsonSpriteObject.frames[i].x;
-            let top = jsonSpriteObject.frames[i].y;
-            let width = jsonSpriteObject.frames[i].w;
-            let height = jsonSpriteObject.frames[i].h;
+        for (let i = 0; i < jsonSpriteObject.frames.length; ++i) {
+            let left = jsonSpriteObject.frames[i].frame.x;
+            let top = jsonSpriteObject.frames[i].frame.y;
+            let width = jsonSpriteObject.frames[i].frame.w;
+            let height = jsonSpriteObject.frames[i].frame.h;
 
             cells.push({left: left, top: top, width: width, height: height});
         }

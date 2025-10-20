@@ -24,6 +24,8 @@ let SpaceshipGame = function () {
     this.PAUSED_CHECK_INTERVAL = 200;
     this.SHORT_DELAY = 50; // lmao
 
+    this.POWER_UP_CYCLE_DURATION = 100;
+
     // Background information
     this.background = new Image();
     this.backgroundOffset = 0;
@@ -41,7 +43,13 @@ let SpaceshipGame = function () {
     this.gameStarted = false;
 
     // Sprites
+    this.powerUps = [];
     this.sprites = [];
+
+    // Sprite Data (we should move this to another JSON file)
+    this.powerUpData = [
+        {left: 300, top: 200}
+    ]
 
     // Behaviors
     this.playerMovement = {
@@ -226,6 +234,7 @@ SpaceshipGame.prototype = {
 
     createSprites: function () {
         this.createPlayerSprite();
+        this.createPowerUpSprites();
 
         this.initializeSprites();
 
@@ -233,11 +242,13 @@ SpaceshipGame.prototype = {
     },
 
     initializeSprites: function () {
-
+        this.positionSprites(this.powerUps, this.powerUpData)
     },
 
     addSpritesToSpriteArray: function () {
-
+        for (let i = 0; i < this.powerUps.length; i++) {
+            this.sprites.push(this.powerUps[i]);
+        }
     },
 
     positionSprites: function (sprites, data) {
@@ -267,6 +278,16 @@ SpaceshipGame.prototype = {
         this.sprites.push(this.player);
     },
 
+    createPowerUpSprites: function () {
+        let powerUp;
+
+        for (let i = 0; i < this.powerUpData.length; i++) {
+            powerUp = createSprite('blue_power_up', 0, [new CycleBehavior(this.POWER_UP_CYCLE_DURATION, 0)])
+            powerUp.velocityX = 25;
+            this.powerUps.push(powerUp);
+        }
+    },
+
     drawBackground: function () {
         this.context.translate(-this.backgroundOffset, 0);
 
@@ -278,6 +299,7 @@ SpaceshipGame.prototype = {
 
     setOffsets: function (now) {
         this.setBackgroundOffset(now);
+        this.setSpriteOffsets(now);
     },
 
     setBackgroundOffset: function (now) {
@@ -285,6 +307,17 @@ SpaceshipGame.prototype = {
 
         if (this.backgroundOffset < 0 || this.backgroundOffset > this.background.width) {
             this.backgroundOffset = 0;
+        }
+    },
+
+    setSpriteOffsets: function (now) {
+        let sprite;
+
+        for (let i = 0; i < this.sprites.length; i++) {
+            sprite = this.sprites[i];
+
+            if (sprite.type === "sparrow_drone") { continue; }
+            sprite.hOffset += sprite.velocityX * (now - this.lastAnimationFrameTime) / 1000;
         }
     },
 

@@ -1,6 +1,9 @@
 let SPRITE_SHEET_PATH = "images/spritesheet.png";
 let SPRITE_JSON_PATH = "images/spritesheet.json";
 let spriteSheet = new Image();
+
+
+
 // You have no idea how unhappy I am about having to do this.
 let spriteJSON = '{\n' +
     '  "sprites": [\n' +

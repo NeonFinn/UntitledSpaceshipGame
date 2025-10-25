@@ -1,3 +1,5 @@
+// usg.js - Spaceship Game Main File
+
 import("/js/sprites.js");
 
 let SpaceshipGame = function () {
@@ -45,11 +47,6 @@ let SpaceshipGame = function () {
     // Sprites
     this.powerUps = [];
     this.sprites = [];
-
-    // Sprite Data (we should move this to another JSON file)
-    this.powerUpData = [
-        {left: 300, top: 200}
-    ]
 
     // Behaviors
     this.playerMovement = {
@@ -216,7 +213,31 @@ SpaceshipGame.prototype = {
 
         this.startToastTransition(text);
 
-        setTimeout(function () {
+        setTimeout(function () {// obstacles.js
+
+function createObstacles(game) {
+    const obstacleData = [
+        { left: 500, top: 180 },
+        { left: 900, top: 220 },
+        { left: 1300, top: 160 }
+    ];
+
+    game.obstacles = [];
+
+    for (let i = 0; i < obstacleData.length; i++) {
+
+        // Give each obstacle a dummy behavior because it was breaking movement without one
+        let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
+        obstacle.velocityX = 25; // scroll speed like power-ups
+        obstacle.hOffset = 0;
+        obstacle.left = obstacleData[i].left;
+        obstacle.top = obstacleData[i].top;
+
+        game.obstacles.push(obstacle);
+        game.sprites.push(obstacle);
+    }
+}
+
             spaceshipGame.hideToast();
         }, duration);
     },
@@ -234,10 +255,14 @@ SpaceshipGame.prototype = {
 
     createSprites: function () {
         this.createPlayerSprite();
-        this.createPowerUpSprites();
+
+        createBluePowerUps(this);  // now handled by powerups.js
+        createRedPowerUps(this);
+        createGreenPowerUps(this);
+
+        createObstacles(this); // now handled by obstacles.js
 
         this.initializeSprites();
-
         this.addSpritesToSpriteArray();
     },
 
@@ -279,13 +304,9 @@ SpaceshipGame.prototype = {
     },
 
     createPowerUpSprites: function () {
-        let powerUp;
-
-        for (let i = 0; i < this.powerUpData.length; i++) {
-            powerUp = createSprite('blue_power_up', 0, [new CycleBehavior(this.POWER_UP_CYCLE_DURATION, 0)])
-            powerUp.velocityX = 25;
-            this.powerUps.push(powerUp);
-        }
+        createBluePowerUps(this);  // now handled by powerups.js
+        createRedPowerUps(this);
+        createRedPowerUps(this);
     },
 
     drawBackground: function () {
@@ -316,8 +337,11 @@ SpaceshipGame.prototype = {
         for (let i = 0; i < this.sprites.length; i++) {
             sprite = this.sprites[i];
 
-            if (sprite.type === "sparrow_drone") { continue; }
+            if (sprite.type === "sparrow_drone") continue;
+
+            if (sprite.velocityX) {
             sprite.hOffset += sprite.velocityX * (now - this.lastAnimationFrameTime) / 1000;
+            }
         }
     },
 
@@ -351,6 +375,8 @@ SpaceshipGame.prototype = {
         this.drawBackground();
         this.updateSprites(now);
         this.drawSprites();
+
+
     },
 
     updateSprites: function (now) {

@@ -77,6 +77,8 @@ let SpaceshipGame = function () {
             if (spaceshipGame.keys['s'] || spaceshipGame.keys['ArrowDown']) {
                 sprite.top += pixelsToMoveY;
             }
+
+            spaceshipGame.checkObstacleCollisions();
         },
 
         execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
@@ -256,13 +258,14 @@ function createObstacles(game) {
     createSprites: function () {
         this.createPlayerSprite();
 
-        createBluePowerUps(this);  // now handled by powerups.js
+        createBluePowerUps(this);  // handled by powerups.js
         createRedPowerUps(this);
         createGreenPowerUps(this);
 
-        createObstacles(this); // now handled by obstacles.js
+        setupPowerUpCollisions(this); // handled by powerups.js
 
-        this.initializeSprites();
+        createObstacles(this); // handled by obstacles.js
+
         this.addSpritesToSpriteArray();
     },
 
@@ -299,6 +302,8 @@ function createObstacles(game) {
         this.player.left = PLAYER_LEFT;
         this.player.velocityX = 50;
         this.player.velocityY = 50;
+        this.player.width = 32;
+        this.player.height = PLAYER_HEIGHT;
 
         this.sprites.push(this.player);
     },
@@ -375,8 +380,8 @@ function createObstacles(game) {
         this.drawBackground();
         this.updateSprites(now);
         this.drawSprites();
-
-
+        this.checkObstacleCollisions();
+        this.checkPowerUpCollisions();
     },
 
     updateSprites: function (now) {
@@ -387,6 +392,10 @@ function createObstacles(game) {
 
             if (sprite.visible && this.isSpriteInView(sprite)) {
                 sprite.update(now, this.fps, this.context, this.lastAnimationFrameTime);
+
+                if (sprite === this.player) {
+                    this.checkObstacleCollisions();
+                }
             }
         }
     },

@@ -7,8 +7,6 @@
     <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Added visible powerups and obstacles. Still need to add functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/obstacles.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/obstacles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/powerups.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/powerups.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,17 +30,16 @@
     &quot;assignee&quot;: &quot;eflauto&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/NeonFinn/UntitledSpaceshipGame.git&quot;,
-    &quot;accountId&quot;: &quot;d0452ae3-cca7-4830-9d0d-29682b59770e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/NeonFinn/UntitledSpaceshipGame.git",
+    "accountId": "55843aa8-ad18-42a6-8677-0387fe73eaaa"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="339Oeee1Ju0gSwntBQdFucG0Lar" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -75,7 +72,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
       </set>
     </attachedChunks>
   </component>
@@ -94,6 +91,7 @@
       <workItem from="1760922367460" duration="11932000" />
       <workItem from="1760935093461" duration="3000" />
       <workItem from="1760935101392" duration="2051000" />
+      <workItem from="1761744983516" duration="1635000" />
     </task>
     <task id="LOCAL-00001" summary="Very basic project base&#10;&#10;There's no sprites yet, still much to add.">
       <option name="closed" value="true" />

@@ -1,7 +1,5 @@
 // usg.js - Spaceship Game Main File
 
-import("/js/sprites.js");
-
 let SpaceshipGame = function () {
     this.canvas = document.getElementById("game-canvas");
     this.context = this.canvas.getContext("2d");
@@ -18,8 +16,8 @@ let SpaceshipGame = function () {
     this.loadingTitleElement = document.getElementById("loading-title");
 
     // Constants
-    this.BACKGROUND_PATH = "/images/background.png";
-    this.LOADING_GIF_PATH = "/images/loading.gif";
+    this.BACKGROUND_PATH = "images/background.png";
+    this.LOADING_GIF_PATH = "images/loading.gif";
 
     this.ANIMATION_RATE = 30;
 
@@ -217,28 +215,28 @@ SpaceshipGame.prototype = {
 
         setTimeout(function () {// obstacles.js
 
-function createObstacles(game) {
-    const obstacleData = [
-        { left: 500, top: 180 },
-        { left: 900, top: 220 },
-        { left: 1300, top: 160 }
-    ];
+            function createObstacles(game) {
+                const obstacleData = [
+                    {left: 500, top: 180},
+                    {left: 900, top: 220},
+                    {left: 1300, top: 160}
+                ];
 
-    game.obstacles = [];
+                game.obstacles = [];
 
-    for (let i = 0; i < obstacleData.length; i++) {
+                for (let i = 0; i < obstacleData.length; i++) {
 
-        // Give each obstacle a dummy behavior because it was breaking movement without one
-        let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
-        obstacle.velocityX = 25; // scroll speed like power-ups
-        obstacle.hOffset = 0;
-        obstacle.left = obstacleData[i].left;
-        obstacle.top = obstacleData[i].top;
+                    // Give each obstacle a dummy behavior because it was breaking movement without one
+                    let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
+                    obstacle.velocityX = 25; // scroll speed like power-ups
+                    obstacle.hOffset = 0;
+                    obstacle.left = obstacleData[i].left;
+                    obstacle.top = obstacleData[i].top;
 
-        game.obstacles.push(obstacle);
-        game.sprites.push(obstacle);
-    }
-}
+                    game.obstacles.push(obstacle);
+                    game.sprites.push(obstacle);
+                }
+            }
 
             spaceshipGame.hideToast();
         }, duration);
@@ -345,7 +343,7 @@ function createObstacles(game) {
             if (sprite.type === "sparrow_drone") continue;
 
             if (sprite.velocityX) {
-            sprite.hOffset += sprite.velocityX * (now - this.lastAnimationFrameTime) / 1000;
+                sprite.hOffset += sprite.velocityX * (now - this.lastAnimationFrameTime) / 1000;
             }
         }
     },

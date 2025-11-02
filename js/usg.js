@@ -414,7 +414,7 @@ window.onkeydown = function (event) {
         spaceshipGame.togglePaused();
     }
     if(key === 'j' || key === 'z' || key === 'Space'){
-        spaceshipGame.shoot();
+        spaceshipGame.playerShoot();
     }
 
     spaceshipGame.keys[key] = true;

@@ -410,8 +410,11 @@ SpaceshipGame.prototype = {
 window.onkeydown = function (event) {
     let key = event.key;
 
-    if (key === 'p') {
+    if (key === 'p' || key === 'Escape') {
         spaceshipGame.togglePaused();
+    }
+    if(key === 'j' || key === 'z' || key === 'Space'){
+        spaceshipGame.shoot();
     }
 
     spaceshipGame.keys[key] = true;

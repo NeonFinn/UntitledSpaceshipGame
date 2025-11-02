@@ -235,6 +235,7 @@ SpaceshipGame.prototype = {
         createBluePowerUps(this);  // handled by powerups.js
         createRedPowerUps(this);
         createGreenPowerUps(this);
+        createEnemies(this);
 
         setupPowerUpCollisions(this); // handled by powerups.js
 
@@ -244,7 +245,8 @@ SpaceshipGame.prototype = {
     },
 
     initializeSprites: function () {
-        this.positionSprites(this.powerUps, this.powerUpData)
+        this.positionSprites(this.powerUps, this.powerUpData);
+        this.positionSprites(this.enemies, this.enemyData);
     },
 
     addSpritesToSpriteArray: function () {

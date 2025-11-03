@@ -1,16 +1,16 @@
 // powerups.js
 
 function createBluePowerUps(game) {
-    const powerUpData = [
+    game.powerUpData = [
         { left: 700, top: 300 }
     ];
 
-    for (let i = 0; i < powerUpData.length; i++) {
+    for (let i = 0; i < game.powerUpData.length; i++) {
         let powerUp = createSprite('blue_power_up', 0, [new CycleBehavior(game.POWER_UP_CYCLE_DURATION, 0)]);
 
         powerUp.velocityX = 25;
-        powerUp.left = powerUpData[i].left;
-        powerUp.top = powerUpData[i].top;
+        powerUp.left = game.powerUpData[i].left;
+        powerUp.top = game.powerUpData[i].top;
         powerUp.width = 16;
         powerUp.height = 16;
         powerUp.collider = true;
@@ -21,15 +21,15 @@ function createBluePowerUps(game) {
 }
 
 function createRedPowerUps(game) {
-    const powerUpData = [
+    game.powerUpData = [
         { left: 400, top: 100 }];
 
-    for (let i = 0; i < powerUpData.length; i++) {
+    for (let i = 0; i < game.powerUpData.length; i++) {
         let powerUp = createSprite('red_power_up', 0, [new CycleBehavior(game.POWER_UP_CYCLE_DURATION, 0)]);
 
         powerUp.velocityX = 25;
-        powerUp.left = powerUpData[i].left;
-        powerUp.top = powerUpData[i].top;
+        powerUp.left = game.powerUpData[i].left;
+        powerUp.top = game.powerUpData[i].top;
         powerUp.width = 16;
         powerUp.height = 16;
         powerUp.collider = true;
@@ -40,15 +40,15 @@ function createRedPowerUps(game) {
 }
 
 function createGreenPowerUps(game) {
-    const powerUpData = [
+    game.powerUpData = [
         { left: 300, top: 200 }];
 
-    for (let i = 0; i < powerUpData.length; i++) {
+    for (let i = 0; i < game.powerUpData.length; i++) {
         let powerUp = createSprite('green_power_up', 0, [new CycleBehavior(game.POWER_UP_CYCLE_DURATION, 0)]);
 
         powerUp.velocityX = 25;
-        powerUp.left = powerUpData[i].left;
-        powerUp.top = powerUpData[i].top;
+        powerUp.left = game.powerUpData[i].left;
+        powerUp.top = game.powerUpData[i].top;
         powerUp.width = 16;
         powerUp.height = 16;
         powerUp.collider = true;

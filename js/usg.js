@@ -22,6 +22,7 @@ let SpaceshipGame = function () {
     this.ANIMATION_RATE = 30;
 
     this.PAUSED_CHECK_INTERVAL = 200;
+    this.SHOTS_INTERVAL = 25;
     this.SHORT_DELAY = 50; // lmao
 
     this.POWER_UP_CYCLE_DURATION = 100;

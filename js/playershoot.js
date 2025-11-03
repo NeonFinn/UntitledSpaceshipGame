@@ -8,7 +8,6 @@ let playerShoot = function(game){
     shot.width = 30;
     shot.height = 18;
     shot.hOffset = 0;
-    console.log("The shooting is being called properly");
     game.shots.push(shot);
     game.sprites.push(shot);
 

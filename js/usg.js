@@ -22,7 +22,7 @@ let SpaceshipGame = function () {
     this.ANIMATION_RATE = 30;
 
     this.PAUSED_CHECK_INTERVAL = 200;
-    this.SHOTS_INTERVAL = 25;
+    this.SHOTS_INTERVAL = 200;
     this.SHORT_DELAY = 50; // lmao
 
     this.POWER_UP_CYCLE_DURATION = 100;
@@ -36,6 +36,7 @@ let SpaceshipGame = function () {
     this.lastAnimationFrameTime = 0;
     this.lastFpsUpdateTime = 0;
     this.fps = 60;
+    
 
     // States
     this.paused = false;
@@ -80,12 +81,13 @@ let SpaceshipGame = function () {
 
             spaceshipGame.checkObstacleCollisions();
         },
-
+        
         execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
             this.setPosition(sprite, now, lastAnimationFrameTime);
         }
     }
-}
+        
+    }
 
 SpaceshipGame.prototype = {
     load: function () {
@@ -285,7 +287,7 @@ SpaceshipGame.prototype = {
 
         this.sprites.push(this.player);
     },
-
+    
     createPowerUpSprites: function () {
         createBluePowerUps(this);  // now handled by powerups.js
         createRedPowerUps(this);

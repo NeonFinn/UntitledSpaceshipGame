@@ -1,17 +1,17 @@
 function createEnemies(game) {
     // Defines initial spawn points and enemy types
     game.enemyData = [
-        { left: 400, top: 100, type: "wander" },
-        { left: 500, top: 160, type: "sine" },
-        { left: 600, top: 220, type: "seeker" },
-        { left: 700, top: 260, type: "dasher" }
+        {left: 400, top: 100, type: "wander"},
+        {left: 500, top: 160, type: "sine"},
+        {left: 600, top: 220, type: "seeker"},
+        {left: 700, top: 260, type: "dasher"}
     ];
-    
+
     game.enemies = [];
 
     for (let i = 0; i < game.enemyData.length; i++) {
         const data = game.enemyData[i];
-        const enemy = createSprite('tear_drop_drone', 270,[new enemyBulletInterval(2000)]);
+        let enemy = createSprite('tear_drop_drone', 270, [new BulletFiring(2000)]);
 
         // Basic setup
         enemy.left = data.left;
@@ -36,8 +36,8 @@ function createEnemies(game) {
         enemy.dashDirY = 0;
 
         // Pattern update logic 
-        enemy.update = function(now, fps, context, lastTime) {
-            const dt = (now - lastTime) / 1000;
+        enemy.update = function (now, fps, context, lastAnimationFrameTime) {
+            const dt = (now - lastAnimationFrameTime) / 1000;
             this.timer += dt;
             this.stateTimer += dt;
 
@@ -51,15 +51,11 @@ function createEnemies(game) {
                 }
                 this.left += this.velocityX * dt;
                 this.top += this.velocityY * dt;
-            }
-
-            else if (this.type === "sine") {
+            } else if (this.type === "sine") {
                 // Moves left while oscillating vertically
                 this.left -= 60 * dt * 1.5;
                 this.top += Math.sin(this.timer * this.frequency) * dt * this.amplitude;
-            }
-
-            else if (this.type === "seeker") {
+            } else if (this.type === "seeker") {
                 // Follows player position slowly
                 const dx = game.player.left - this.left;
                 const dy = game.player.top - this.top;
@@ -68,9 +64,7 @@ function createEnemies(game) {
                 this.velocityY = (dy / dist) * 60;
                 this.left += this.velocityX * dt;
                 this.top += this.velocityY * dt;
-            }
-
-            else if (this.type === "dasher") {
+            } else if (this.type === "dasher") {
                 // Waits, then dashes straight toward player
                 if (this.state === "charge") {
                     this.left -= 40 * dt; // slow move
@@ -93,7 +87,11 @@ function createEnemies(game) {
                     }
                 }
             }
-        };
+
+            for (let i = 0; i < this.behaviors.length; ++i) {
+                this.behaviors[i].execute(this, now, fps, context, lastAnimationFrameTime);
+            }
+        }
 
         game.enemies.push(enemy);
         game.sprites.push(enemy);

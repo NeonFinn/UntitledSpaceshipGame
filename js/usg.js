@@ -36,7 +36,7 @@ let SpaceshipGame = function () {
     this.lastAnimationFrameTime = 0;
     this.lastFpsUpdateTime = 0;
     this.fps = 60;
-    
+
 
     // States
     this.paused = false;
@@ -81,13 +81,13 @@ let SpaceshipGame = function () {
 
             spaceshipGame.checkObstacleCollisions();
         },
-        
+
         execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
             this.setPosition(sprite, now, lastAnimationFrameTime);
         }
     }
-        
-    }
+
+}
 
 SpaceshipGame.prototype = {
     load: function () {
@@ -287,7 +287,7 @@ SpaceshipGame.prototype = {
 
         this.sprites.push(this.player);
     },
-    
+
     createPowerUpSprites: function () {
         createBluePowerUps(this);  // now handled by powerups.js
         createRedPowerUps(this);
@@ -417,7 +417,7 @@ window.onkeydown = function (event) {
     if (key === 'p' || key === 'Escape') {
         spaceshipGame.togglePaused();
     }
-    if(key === 'j' || key === 'z' || key === ' '){
+    if (key === 'j' || key === 'z' || key === ' ') {
         playerShoot(spaceshipGame);
     }
 

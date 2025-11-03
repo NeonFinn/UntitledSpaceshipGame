@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Added visible powerups and obstacles. Still need to add functionality">
-      <change afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/behaviors/enemyBulletInterval.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/behaviors/enemyBulletInterval.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/enemies.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/enemyshoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemyshoot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,6 +101,8 @@
       <workItem from="1760935093461" duration="3000" />
       <workItem from="1760935101392" duration="2051000" />
       <workItem from="1761744983516" duration="1635000" />
+      <workItem from="1762126320202" duration="17000" />
+      <workItem from="1762149943053" duration="1749000" />
     </task>
     <task id="LOCAL-00001" summary="Very basic project base&#10;&#10;There's no sprites yet, still much to add.">
       <option name="closed" value="true" />
@@ -133,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761406833831</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game.">
+      <option name="closed" value="true" />
+      <created>1762122648281</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762122648281</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +164,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Very basic project base&#10;&#10;There's no sprites yet, still much to add." />
     <MESSAGE value="Added visible powerups and obstacles. Still need to add functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added visible powerups and obstacles. Still need to add functionality" />
+    <MESSAGE value="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game." />
   </component>
 </project>

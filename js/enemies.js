@@ -1,7 +1,5 @@
-// enemies.js – updated with movement patterns (Christian Angel’s section)
-
 function createEnemies(game) {
-    // Define initial spawn points and enemy types
+    // Defines initial spawn points and enemy types
     game.enemyData = [
         { left: 400, top: 100, type: "wander" },
         { left: 500, top: 160, type: "sine" },
@@ -37,7 +35,7 @@ function createEnemies(game) {
         enemy.dashDirX = 0;
         enemy.dashDirY = 0;
 
-        // === Pattern update logic ===
+        // Pattern update logic 
         enemy.update = function(now, fps, context, lastTime) {
             const dt = (now - lastTime) / 1000;
             this.timer += dt;

@@ -11,7 +11,7 @@ function createEnemies(game) {
 
     for (let i = 0; i < game.enemyData.length; i++) {
         const data = game.enemyData[i];
-        const enemy = createSprite('tear_drop_drone', 270);
+        const enemy = createSprite('tear_drop_drone', 270,[new enemyBulletInterval(2000)]);
 
         // Basic setup
         enemy.left = data.left;

@@ -413,8 +413,8 @@ window.onkeydown = function (event) {
     if (key === 'p' || key === 'Escape') {
         spaceshipGame.togglePaused();
     }
-    if(key === 'j' || key === 'z' || key === 'Space'){
-        spaceshipGame.playerShoot();
+    if(key === 'j' || key === 'z' || key === ' '){
+        playerShoot();
     }
 
     spaceshipGame.keys[key] = true;

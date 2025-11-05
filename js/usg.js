@@ -288,12 +288,6 @@ SpaceshipGame.prototype = {
         this.sprites.push(this.player);
     },
 
-    createPowerUpSprites: function () {
-        createBluePowerUps(this);  // now handled by powerups.js
-        createRedPowerUps(this);
-        createRedPowerUps(this);
-    },
-
     drawBackground: function () {
         this.context.translate(-this.backgroundOffset, 0);
 
@@ -356,7 +350,6 @@ SpaceshipGame.prototype = {
 
     draw: function (now) {
         this.setOffsets(now);
-
         this.drawBackground();
         this.updateSprites(now);
         this.drawSprites();

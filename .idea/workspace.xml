@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game.">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Fix enemy shooting&#10;&#10;Fixed the enemy shooting by updating the enemy update code to include behavior updates. Also made some general modifications to place the bullets correctly and fixed the math involved with the bullet firing timing.">
+      <change afterPath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/behaviors/enemyBulletInterval.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/behaviors/enemyBulletInterval.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/enemies.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/enemyshoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemyshoot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,13 +59,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;enemy-rewrite&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/lexib/PycharmProjects/UntitledSpaceshipGame/js&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;consents&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -102,7 +103,10 @@
       <workItem from="1760935101392" duration="2051000" />
       <workItem from="1761744983516" duration="1635000" />
       <workItem from="1762126320202" duration="17000" />
-      <workItem from="1762149943053" duration="1749000" />
+      <workItem from="1762149943053" duration="2047000" />
+      <workItem from="1762215323659" duration="725000" />
+      <workItem from="1762277199202" duration="1812000" />
+      <workItem from="1762351489177" duration="1926000" />
     </task>
     <task id="LOCAL-00001" summary="Very basic project base&#10;&#10;There's no sprites yet, still much to add.">
       <option name="closed" value="true" />
@@ -144,13 +148,41 @@
       <option name="project" value="LOCAL" />
       <updated>1762122648281</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix enemy shooting&#10;&#10;Fixed the enemy shooting by updating the enemy update code to include behavior updates. Also made some general modifications to place the bullets correctly and fixed the math involved with the bullet firing timing.">
+      <option name="closed" value="true" />
+      <created>1762151805588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762151805588</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/enemy-rewrite" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -165,6 +197,7 @@
     <MESSAGE value="Very basic project base&#10;&#10;There's no sprites yet, still much to add." />
     <MESSAGE value="Added visible powerups and obstacles. Still need to add functionality" />
     <MESSAGE value="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game." />
+    <MESSAGE value="Fix enemy shooting&#10;&#10;Fixed the enemy shooting by updating the enemy update code to include behavior updates. Also made some general modifications to place the bullets correctly and fixed the math involved with the bullet firing timing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix enemy shooting&#10;&#10;Fixed the enemy shooting by updating the enemy update code to include behavior updates. Also made some general modifications to place the bullets correctly and fixed the math involved with the bullet firing timing." />
   </component>
 </project>

@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Fix enemy shooting&#10;&#10;Fixed the enemy shooting by updating the enemy update code to include behavior updates. Also made some general modifications to place the bullets correctly and fixed the math involved with the bullet firing timing.">
-      <change afterPath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/enemies.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

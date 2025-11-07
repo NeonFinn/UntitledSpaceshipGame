@@ -5,14 +5,14 @@ SineBehavior = function (velocity) {
 
 SineBehavior.prototype = {
     execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
-        this.moveSpriteHorizontally(sprite, now, lastAnimationFrameTime);
+        this.moveSpriteVertically(sprite, now, lastAnimationFrameTime);
     },
 
-    moveSpriteHorizontally: function (sprite, now, lastAnimationFrameTime) {
-        const SCREEN_WIDTH = 800;
+    moveSpriteVertically: function (sprite, now, lastAnimationFrameTime) {
+        const SCREEN_HEIGHT = 400;
         let pixelsToMoveY = (now - lastAnimationFrameTime) / 1000;
 
-        if ((sprite.top <= 0 && !this.reversed) || (sprite.top + sprite.height >= SCREEN_WIDTH && this.reversed)) {
+        if ((sprite.top <= 0 && !this.reversed) || (sprite.top + sprite.height >= SCREEN_HEIGHT && this.reversed)) {
             this.velocityY = -this.velocityY;
             this.reversed = !this.reversed;
         }
@@ -57,3 +57,39 @@ DroneBehavior.prototype = {
         sprite.top += pixelsToMoveY;
     }
 };
+
+FollowBehavior = function (horizontalVelocity, verticalVelocity) {
+    this.horizontalVelocity = horizontalVelocity;
+    this.verticalVelocity = verticalVelocity;
+    this.approaching = true;
+};
+
+FollowBehavior.prototype = {
+    execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
+        if (this.approaching && sprite.left - sprite.hOffset >= 300) {
+            sprite.velocityX = this.horizontalVelocity;
+        } else if (this.approaching) {
+            this.approaching = false;
+            sprite.velocityX = 0;
+            sprite.behaviors.push(new BulletFiring(250));
+        }
+
+        this.moveSpriteVertically(sprite, now, lastAnimationFrameTime);
+    },
+
+    moveSpriteVertically: function (sprite, now, lastAnimationFrameTime) {
+        let pixelsToMoveY = (now - lastAnimationFrameTime) / 1000;
+        let playerY = spaceshipGame.player.top + spaceshipGame.player.height / 2;
+        let spriteY = sprite.top + sprite.height / 2;
+
+        if (playerY > spriteY) {
+            pixelsToMoveY *= this.verticalVelocity;
+        } else if (playerY < spriteY) {
+            pixelsToMoveY *= -this.verticalVelocity;
+        } else {
+            pixelsToMoveY *= 0;
+        }
+
+        sprite.top += pixelsToMoveY;
+    }
+}

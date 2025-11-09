@@ -48,6 +48,7 @@ let SpaceshipGame = function () {
     this.powerUps = [];
     this.sprites = [];
     this.shots = [];
+    this.enemies = [];
 
     // Behaviors
     this.playerMovement = {

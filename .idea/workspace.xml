@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Reimplement enemy drone behavior&#10;&#10;Reimplemented the enemy drone behavior which was previously the seeker. This uses a behavior now.">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Reimplement enemy follow behavior&#10;&#10;Reimplemented the enemy follow behavior. It approaches the player until it is 300 pixels away from the left side of the screen and then starts firing. Follows the player vertically constantly.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/enemies.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,9 @@
       <workItem from="1762277199202" duration="1812000" />
       <workItem from="1762351489177" duration="1926000" />
       <workItem from="1762382060015" duration="24000" />
-      <workItem from="1762537262546" duration="1192000" />
+      <workItem from="1762537262546" duration="1272000" />
+      <workItem from="1762622041943" duration="3000000" />
+      <workItem from="1762650292227" duration="176000" />
     </task>
     <task id="LOCAL-00001" summary="Very basic project base&#10;&#10;There's no sprites yet, still much to add.">
       <option name="closed" value="true" />
@@ -164,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762360789631</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Reimplement enemy follow behavior&#10;&#10;Reimplemented the enemy follow behavior. It approaches the player until it is 300 pixels away from the left side of the screen and then starts firing. Follows the player vertically constantly.">
+      <option name="closed" value="true" />
+      <created>1762538533804</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762538533804</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +218,7 @@
     <MESSAGE value="Add enemy sprite base to the game&#10;&#10;Also added a single enemy to the game." />
     <MESSAGE value="Fix enemy shooting&#10;&#10;Fixed the enemy shooting by updating the enemy update code to include behavior updates. Also made some general modifications to place the bullets correctly and fixed the math involved with the bullet firing timing." />
     <MESSAGE value="Reimplement enemy drone behavior&#10;&#10;Reimplemented the enemy drone behavior which was previously the seeker. This uses a behavior now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reimplement enemy drone behavior&#10;&#10;Reimplemented the enemy drone behavior which was previously the seeker. This uses a behavior now." />
+    <MESSAGE value="Reimplement enemy follow behavior&#10;&#10;Reimplemented the enemy follow behavior. It approaches the player until it is 300 pixels away from the left side of the screen and then starts firing. Follows the player vertically constantly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reimplement enemy follow behavior&#10;&#10;Reimplemented the enemy follow behavior. It approaches the player until it is 300 pixels away from the left side of the screen and then starts firing. Follows the player vertically constantly." />
   </component>
 </project>

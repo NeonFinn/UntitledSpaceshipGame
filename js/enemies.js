@@ -4,7 +4,7 @@ function createEnemies(game) {
         {left: 400, top: 100, type: "drone"},
         {left: 500, top: 160, type: "sine"},
         {left: 600, top: 220, type: "follow"},
-        {left: 700, top: 260, type: "dasher"}
+        {left: 700, top: 260, type: "shield"}
     ];
 
     game.enemies = [];
@@ -22,6 +22,9 @@ function createEnemies(game) {
                 break;
             case "follow":
                 enemy = createSprite('sparrow', 270, [new FollowBehavior(60, 20)]);
+                break;
+            case "shield":
+                enemy = createSprite('bat', 270, [new ShieldBehavior(100)]);
                 break;
             default:
                 break;

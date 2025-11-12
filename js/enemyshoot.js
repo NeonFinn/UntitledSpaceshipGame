@@ -1,7 +1,7 @@
 // Code to allow the enemy to shoot moving projectiles with a pattern.
 
 let enemyShoot = function (game, sprite) {
-    let shot = createSprite('shot', 0);
+    let shot = createSprite('shot', 0, [spaceshipGame.collideBehavior]);
     shot.velocityX = 80;
     shot.left = sprite.left - sprite.hOffset - shot.width;
     shot.top = sprite.top + sprite.height / 2 - shot.height / 2

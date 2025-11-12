@@ -86,6 +86,73 @@ let SpaceshipGame = function () {
         execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
             this.setPosition(sprite, now, lastAnimationFrameTime);
         }
+    };
+
+    this.collideBehavior = {
+        isCandidateForCollision: function (sprite, otherSprite) {
+            let spriteCollisionRect = sprite.calculateCollisionRectangle();
+            let otherCollisionRect = otherSprite.calculateCollisionRectangle();
+
+            return sprite !== otherSprite && sprite.visible && otherSprite.visible && otherCollisionRect.left < spriteCollisionRect.right;
+        },
+
+        didCollide: function (sprite, otherSprite, context) {
+            let spriteCollisionRect = sprite.calculateCollisionRectangle();
+            let otherCollisionRect = otherSprite.calculateCollisionRectangle();
+
+            context.beginPath();
+            context.rect(otherCollisionRect.left, otherCollisionRect.top, otherCollisionRect.right - otherCollisionRect.left, otherCollisionRect.bottom - otherCollisionRect.top);
+
+            return context.isPointInPath(spriteCollisionRect.left, spriteCollisionRect.top) ||
+                context.isPointInPath(spriteCollisionRect.right, spriteCollisionRect.top) ||
+                context.isPointInPath(spriteCollisionRect.centerX, spriteCollisionRect.centerY) ||
+                context.isPointInPath(spriteCollisionRect.left, spriteCollisionRect.bottom) ||
+                context.isPointInPath(spriteCollisionRect.right, spriteCollisionRect.bottom);
+        },
+
+        processCollision: function (sprite, otherSprite) {
+            if (sprite.type === 'sparrow_drone') {
+                if (otherSprite.type === 'power_up') {
+                    this.processPowerUpCollision(sprite, otherSprite);
+                } else if (otherSprite.type === 'follow' || otherSprite.type === 'shot' || otherSprite.type === 'drone' || otherSprite.type === 'sine' || otherSprite.type === 'asteroid') {
+                    this.processShipHitCollision(sprite);
+                }
+            } else if (sprite.type === 'shot') {
+                if (otherSprite.type === 'sparrow_drone' || otherSprite.type === 'follow' || otherSprite.type === 'shot' || otherSprite.type === 'drone' || otherSprite.type === 'sine') {
+                    this.processBulletCollision(sprite, otherSprite);
+                }
+            }
+        },
+
+        processPowerUpCollision: function (sprite, otherSprite) {
+            // TODO: Implement power-up functions
+            console.log("Collision with power-up");
+        },
+
+        processShipHitCollision: function (sprite) {
+            // TODO: Implement ship hitting enemy/asteroid
+            console.log("Ship hit an obstacle");
+        },
+
+        processBulletCollision: function (sprite) {
+            // TODO: Implement bullet collisions
+            // You can use bullet velocity (moving left or right) to determine if the bullet is the player's or an enemy's.
+            console.log("Bullet hit something");
+        },
+
+        execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
+            let otherSprite;
+
+            for (let i = 0; i < spaceshipGame.sprites.length; ++i) {
+                otherSprite = spaceshipGame.sprites[i];
+
+                if (this.isCandidateForCollision(sprite, otherSprite)) {
+                    if (this.didCollide(sprite, otherSprite, context)) {
+                        this.processCollision(sprite, otherSprite);
+                    }
+                }
+            }
+        }
     }
 
 }
@@ -276,7 +343,7 @@ SpaceshipGame.prototype = {
         let PLAYER_HEIGHT = 32;
         let STARTING_HEIGHT = 200;
 
-        this.player = createSprite("sparrow_drone", 90, [this.playerMovement]);
+        this.player = createSprite("sparrow_drone", 90, [this.playerMovement, this.collideBehavior]);
 
         this.player.y = STARTING_HEIGHT;
         this.player.top = STARTING_HEIGHT - PLAYER_HEIGHT;
@@ -387,6 +454,7 @@ SpaceshipGame.prototype = {
             if (sprite.visible && this.isSpriteInView(sprite)) {
                 this.context.translate(-sprite.hOffset, 0);
                 sprite.draw(this.context);
+                sprite.drawCollisionRectangle(this.context);
                 this.context.translate(sprite.hOffset, 0);
             }
         }

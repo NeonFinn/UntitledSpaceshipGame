@@ -138,8 +138,6 @@ ShieldBehavior.prototype = {
             let yDist = enemyY - playerCenterY;
             let dist = Math.abs(Math.hypot(xDist, yDist));
 
-            console.log(enemy.type, dist);
-
             if (dist < closestDist || !closestDist) {
                 closestDist = dist;
                 closestEnemy = enemy;

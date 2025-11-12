@@ -134,7 +134,7 @@ let SpaceshipGame = function () {
             console.log("Ship hit an obstacle");
         },
 
-        processBulletCollision: function (sprite) {
+        processBulletCollision: function (sprite, otherSprite) {
             // TODO: Implement bullet collisions
             // You can use bullet velocity (moving left or right) to determine if the bullet is the player's or an enemy's.
             console.log("Bullet hit something");

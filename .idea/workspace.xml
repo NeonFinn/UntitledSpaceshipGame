@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Implement enemy shield behavior&#10;&#10;Implemented the enemy shield behavior. It finds the closest ship to the player and goes in front of it, guarding it.">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Add basic collisions&#10;&#10;Added a basic collision system. What happens on collision still needs to be implemented but the collisions do log to console.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/enemyshoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemyshoot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/playershoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/playershoot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +109,7 @@
       <workItem from="1762537262546" duration="1272000" />
       <workItem from="1762622041943" duration="3000000" />
       <workItem from="1762650292227" duration="176000" />
-      <workItem from="1762956513172" duration="3299000" />
+      <workItem from="1762956513172" duration="3972000" />
     </task>
     <task id="LOCAL-00001" summary="Very basic project base&#10;&#10;There's no sprites yet, still much to add.">
       <option name="closed" value="true" />
@@ -178,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762538533804</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add basic collisions&#10;&#10;Added a basic collision system. What happens on collision still needs to be implemented but the collisions do log to console.">
+      <option name="closed" value="true" />
+      <created>1762959881632</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762959881632</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +227,7 @@
     <MESSAGE value="Fix enemy shooting&#10;&#10;Fixed the enemy shooting by updating the enemy update code to include behavior updates. Also made some general modifications to place the bullets correctly and fixed the math involved with the bullet firing timing." />
     <MESSAGE value="Reimplement enemy drone behavior&#10;&#10;Reimplemented the enemy drone behavior which was previously the seeker. This uses a behavior now." />
     <MESSAGE value="Reimplement enemy follow behavior&#10;&#10;Reimplemented the enemy follow behavior. It approaches the player until it is 300 pixels away from the left side of the screen and then starts firing. Follows the player vertically constantly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reimplement enemy follow behavior&#10;&#10;Reimplemented the enemy follow behavior. It approaches the player until it is 300 pixels away from the left side of the screen and then starts firing. Follows the player vertically constantly." />
+    <MESSAGE value="Add basic collisions&#10;&#10;Added a basic collision system. What happens on collision still needs to be implemented but the collisions do log to console." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add basic collisions&#10;&#10;Added a basic collision system. What happens on collision still needs to be implemented but the collisions do log to console." />
   </component>
 </project>

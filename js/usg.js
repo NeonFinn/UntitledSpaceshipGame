@@ -312,6 +312,8 @@ SpaceshipGame.prototype = {
     createSprites: function () {
         this.createPlayerSprite();
 
+        createBackgroundPlanets(this); // handled by backgroundplanets.js
+
         createBluePowerUps(this);  // handled by powerups.js
         createRedPowerUps(this);
         createGreenPowerUps(this);
@@ -320,6 +322,7 @@ SpaceshipGame.prototype = {
         setupPowerUpCollisions(this); // handled by powerups.js
 
         createObstacles(this); // handled by obstacles.js
+
 
         this.addSpritesToSpriteArray();
     },

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Added looping fog">
-      <change afterPath="$PROJECT_DIR$/js/backgroundplanets.js" afterDir="false" />
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Added background planets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/obstacles.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/obstacles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +35,12 @@
     &quot;assignee&quot;: &quot;eflauto&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/NeonFinn/UntitledSpaceshipGame.git&quot;,
-    &quot;accountId&quot;: &quot;55843aa8-ad18-42a6-8677-0387fe73eaaa&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/NeonFinn/UntitledSpaceshipGame.git",
+    "accountId": "d0452ae3-cca7-4830-9d0d-29682b59770e"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -83,7 +81,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
+        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
       </set>
     </attachedChunks>
   </component>
@@ -194,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763442410295</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added background planets">
+      <option name="closed" value="true" />
+      <created>1763443936852</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1763443936852</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +246,7 @@
     <MESSAGE value="Reimplement enemy follow behavior&#10;&#10;Reimplemented the enemy follow behavior. It approaches the player until it is 300 pixels away from the left side of the screen and then starts firing. Follows the player vertically constantly." />
     <MESSAGE value="Add basic collisions&#10;&#10;Added a basic collision system. What happens on collision still needs to be implemented but the collisions do log to console." />
     <MESSAGE value="Added looping fog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added looping fog" />
+    <MESSAGE value="Added background planets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added background planets" />
   </component>
 </project>

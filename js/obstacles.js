@@ -47,25 +47,39 @@ function createObstacles(game) {
     };
 
     game.resolveObstacleCollision = function (player, obstacle) {
+        const obstacleLeft = obstacle.left - obstacle.hOffset;
+        const obstacleRight = obstacleLeft + obstacle.width;
+        const obstacleTop = obstacle.top;
+        const obstacleBottom = obstacleTop + obstacle.height;
+
+        const playerLeft = player.left;
         const playerRight = player.left + player.width;
+        const playerTop = player.top;
         const playerBottom = player.top + player.height;
-        const obstacleRight = obstacle.left + obstacle.width;
-        const obstacleBottom = obstacle.top + obstacle.height;
 
-        const overlapLeft = playerRight - obstacle.left;
-        const overlapRight = obstacleRight - player.left;
-        const overlapTop = playerBottom - obstacle.top;
-        const overlapBottom = obstacleBottom - player.top;
+        // find overlap on both axes
+        const overlapX = Math.min(playerRight, obstacleRight) - Math.max(playerLeft, obstacleLeft);
+        const overlapY = Math.min(playerBottom, obstacleBottom) - Math.max(playerTop, obstacleTop);
 
-        // determine the smallest overlap on each axis
-        const overlapX = overlapLeft < overlapRight ? overlapLeft : -overlapRight;
-        const overlapY = overlapTop < overlapBottom ? overlapTop : -overlapBottom;
+        // if no overlap, return
+        if (overlapX <= 0 || overlapY <= 0) return;
 
-        // push the player the shorter distance out of the obstacle
-        if (Math.abs(overlapX) < Math.abs(overlapY)) {
-            player.left -= overlapX;
-        } else {
-            player.top -= overlapY;
+        // smallest overlap determines which axis to resolve
+        if (overlapX < overlapY) {
+            if (playerLeft < obstacleLeft) { // dont allow player to move through obstacle on X axis
+                player.left -= overlapX; // push left
+            }
+            else {
+                player.left += overlapX; // push right
+            }
+        }
+        else {
+            if (playerTop < obstacleTop) { // dont allow player to move through obstacle on Y axis
+                player.top -= overlapY; // push up
+            }
+            else {
+                player.top += overlapY; // push down
+            }
         }
     };
 }

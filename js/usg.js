@@ -32,11 +32,17 @@ let SpaceshipGame = function () {
     this.backgroundOffset = 0;
     this.backgroundVelocity = 42;
 
+    // Fog information
+    this.fog = new Image();
+    this.fog.src = "images/fog.png";
+    this.fogOffset = 0;
+    this.fogVelocity = 15;
+    this.fogOpacity = 0.2;
+
     // Time information
     this.lastAnimationFrameTime = 0;
     this.lastFpsUpdateTime = 0;
     this.fps = 60;
-
 
     // States
     this.paused = false;
@@ -164,6 +170,7 @@ SpaceshipGame.prototype = {
     },
 
     initializeImages: function () {
+        // background image
         this.background.src = this.BACKGROUND_PATH;
         this.loadingGifElement.src = this.LOADING_GIF_PATH;
 
@@ -171,6 +178,7 @@ SpaceshipGame.prototype = {
             spaceshipGame.backgroundLoaded();
         }
 
+        // loading gif image
         this.loadingGifElement.onload = function () {
             spaceshipGame.loadingAnimationLoaded();
         }
@@ -357,12 +365,23 @@ SpaceshipGame.prototype = {
     },
 
     drawBackground: function () {
+        // draw background
         this.context.translate(-this.backgroundOffset, 0);
-
         this.context.drawImage(this.background, 0, 0);
         this.context.drawImage(this.background, this.background.width, 0);
-
         this.context.translate(this.backgroundOffset, 0);
+
+        // draw fog layer
+        this.context.save();
+        this.context.globalAlpha = this.fogOpacity;
+
+        // draw fog images in a loop so there are no gaps
+        let fogX = -this.fogOffset % this.fog.width;
+        for (let x = fogX; x < this.canvas.width; x += this.fog.width) {
+            this.context.drawImage(this.fog, x, 0);
+        }
+
+        this.context.restore(); // resets globalAlpha so it doesn't affect other drawings
     },
 
     setOffsets: function (now) {
@@ -371,10 +390,17 @@ SpaceshipGame.prototype = {
     },
 
     setBackgroundOffset: function (now) {
+        // main background
         this.backgroundOffset += this.backgroundVelocity * (now - this.lastAnimationFrameTime) / 1000;
 
         if (this.backgroundOffset < 0 || this.backgroundOffset > this.background.width) {
             this.backgroundOffset = 0;
+        }
+
+        // fog layer
+        this.fogOffset += this.fogVelocity * (now - this.lastAnimationFrameTime) / 1000;
+        if (this.fogOffset < 0 || this.fogOffset > this.fog.width) {
+            this.fogOffset = 0;
         }
     },
 

@@ -363,6 +363,10 @@ SpaceshipGame.prototype = {
         this.player.velocityY = 50;
         this.player.width = 32;
         this.player.height = PLAYER_HEIGHT;
+        this.player.weaponStage = 0;  // For weapon power (multiple bullets)
+        this.player.movementStage = 0;  // For movement speed
+        this.player.bulletStage = 0;  // For bullet speed
+        this.player.health = 3
 
         this.sprites.push(this.player);
     },

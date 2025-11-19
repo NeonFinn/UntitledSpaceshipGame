@@ -118,7 +118,7 @@ let SpaceshipGame = function () {
 
         processCollision: function (sprite, otherSprite) {
             if (sprite.type === 'sparrow_drone') {
-                if (otherSprite.type === 'power_up') {
+                if (otherSprite.type.includes('power_up')) {
                     this.processPowerUpCollision(sprite, otherSprite);
                 } else if (otherSprite.type === 'follow' || otherSprite.type === 'shot' || otherSprite.type === 'drone' || otherSprite.type === 'sine' || otherSprite.type === 'asteroid') {
                     this.processShipHitCollision(sprite);
@@ -337,8 +337,6 @@ SpaceshipGame.prototype = {
         createGreenPowerUps(this);
         createEnemies(this);
 
-        setupPowerUpCollisions(this); // handled by powerups.js
-
         createObstacles(this); // handled by obstacles.js
 
 
@@ -473,7 +471,6 @@ SpaceshipGame.prototype = {
         this.updateSprites(now);
         this.drawSprites();
         this.checkObstacleCollisions();
-        this.checkPowerUpCollisions();
     },
 
     updateSprites: function (now) {

@@ -159,8 +159,26 @@ let SpaceshipGame = function () {
                 }
             }
         }
-    }
+    };
 
+    this.checkMovementPowerUpBehavior = {
+        execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
+            switch (sprite.movementStage) {
+                case 2:
+                    sprite.velocityX = 100;
+                    sprite.velocityY = 100;
+                    break;
+                case 1:
+                    sprite.velocityX = 75;
+                    sprite.velocityY = 75;
+                    break;
+                default:
+                    sprite.velocityX = 50;
+                    sprite.velocityY = 50;
+                    break;
+            }
+        }
+    };
 }
 
 SpaceshipGame.prototype = {
@@ -354,7 +372,7 @@ SpaceshipGame.prototype = {
         let PLAYER_HEIGHT = 32;
         let STARTING_HEIGHT = 200;
 
-        this.player = createSprite("sparrow_drone", 90, [this.playerMovement, this.collideBehavior]);
+        this.player = createSprite("sparrow_drone", 90, [this.playerMovement, this.collideBehavior, this.checkMovementPowerUpBehavior]);
 
         this.player.y = STARTING_HEIGHT;
         this.player.top = STARTING_HEIGHT - PLAYER_HEIGHT;
@@ -366,7 +384,7 @@ SpaceshipGame.prototype = {
         this.player.weaponStage = 0;  // For weapon power (multiple bullets)
         this.player.movementStage = 0;  // For movement speed
         this.player.bulletStage = 0;  // For bullet speed
-        this.player.health = 3
+        this.player.health = 3;
 
         this.sprites.push(this.player);
     },

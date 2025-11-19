@@ -384,6 +384,13 @@ SpaceshipGame.prototype = {
         this.player.bulletStage = 0;  // For bullet speed
         this.player.health = 3;
 
+        this.player.collisionMargin = {
+            left: 6,
+            right: 8,
+            top: 6,
+            bottom: 6
+        }
+
         this.sprites.push(this.player);
     },
 

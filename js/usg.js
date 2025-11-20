@@ -131,8 +131,27 @@ let SpaceshipGame = function () {
         },
 
         processPowerUpCollision: function (sprite, otherSprite) {
-            // TODO: Implement power-up functions
-            console.log("Collision with power-up");
+            let color = otherSprite.type.split('_', 1)[0];
+
+            otherSprite.visible = false;
+
+            switch (color) {
+                case 'red':
+                    if (sprite.weaponStage < 2) sprite.weaponStage++;
+                    break;
+                case 'blue':
+                    if (sprite.movementStage < 2) sprite.movementStage++;
+                    break;
+                case 'green':
+                    if (sprite.health < 3) sprite.health++;
+                    if (sprite.health > 3) sprite.health = 3;
+                    break;
+                case 'yellow':
+                    if (sprite.bulletStage < 2) sprite.bulletStage++;
+                    break;
+                default:
+                    break;
+            }
         },
 
         processShipHitCollision: function (sprite) {

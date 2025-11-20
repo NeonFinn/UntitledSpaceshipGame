@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Added background planets">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Player slides along edge of asteroids">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/obstacles.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/obstacles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/playershoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/playershoot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +36,12 @@
     &quot;assignee&quot;: &quot;eflauto&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/NeonFinn/UntitledSpaceshipGame.git",
-    "accountId": "d0452ae3-cca7-4830-9d0d-29682b59770e"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NeonFinn/UntitledSpaceshipGame.git&quot;,
+    &quot;accountId&quot;: &quot;d0452ae3-cca7-4830-9d0d-29682b59770e&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -200,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763443936852</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Player slides along edge of asteroids">
+      <option name="closed" value="true" />
+      <created>1763488188701</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1763488188701</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +256,7 @@
     <MESSAGE value="Add basic collisions&#10;&#10;Added a basic collision system. What happens on collision still needs to be implemented but the collisions do log to console." />
     <MESSAGE value="Added looping fog" />
     <MESSAGE value="Added background planets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added background planets" />
+    <MESSAGE value="Player slides along edge of asteroids" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player slides along edge of asteroids" />
   </component>
 </project>

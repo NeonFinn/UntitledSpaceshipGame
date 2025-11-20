@@ -5,8 +5,11 @@ let playerShoot = function(game){
     const OFFSET_BULLET_TOP_ADJUST = 12;
     let shots = [];
     let shot1 = createSprite('shot', 0, [spaceshipGame.collideBehavior]);
+    shot1.type = 'playerShot';
     let shot2 = createSprite('shot', 0, [spaceshipGame.collideBehavior]);
+    shot2.type = 'playerShot';
     let shot3 = createSprite('shot', 0, [spaceshipGame.collideBehavior]);
+    shot3.type = 'playerShot';
 
     switch (game.player.bulletStage) {
         case 1:

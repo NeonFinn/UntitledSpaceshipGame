@@ -123,8 +123,8 @@ let SpaceshipGame = function () {
                 } else if (otherSprite.type === 'follow' || otherSprite.type === 'shot' || otherSprite.type === 'drone' || otherSprite.type === 'sine' || otherSprite.type === 'asteroid') {
                     this.processShipHitCollision(sprite);
                 }
-            } else if (sprite.type === 'shot') {
-                if (otherSprite.type === 'sparrow_drone' || otherSprite.type === 'follow' || otherSprite.type === 'shot' || otherSprite.type === 'drone' || otherSprite.type === 'sine') {
+            } else if (sprite.type === 'playerShot') {
+                if (otherSprite.health !== undefined) { // process if enemy has health
                     this.processBulletCollision(sprite, otherSprite);
                 }
             }
@@ -155,14 +155,18 @@ let SpaceshipGame = function () {
         },
 
         processShipHitCollision: function (sprite) {
-            // TODO: Implement ship hitting enemy/asteroid
-            console.log("Ship hit an obstacle");
+            spaceshipGame.takePlayerDamage(1);
         },
 
         processBulletCollision: function (sprite, otherSprite) {
-            // TODO: Implement bullet collisions
-            // You can use bullet velocity (moving left or right) to determine if the bullet is the player's or an enemy's.
-            console.log("Bullet hit something");
+            otherSprite.health -= 1;
+            console.log("Enemy hit! Remaining health: " + otherSprite.health);
+            sprite.visible = false;
+
+            if (otherSprite.health <= 0) {
+                otherSprite.visible = false;
+                console.log("Enemy destroyed!");
+            }
         },
 
         execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
@@ -400,6 +404,11 @@ SpaceshipGame.prototype = {
         this.player.movementStage = 0;  // For movement speed
         this.player.bulletStage = 0;  // For bullet speed
         this.player.health = 3;
+        this.player.lastDamageTime = 0;
+        this.player.damageCooldown = 2000; // milliseconds
+        this.player.flashing = false;
+        this.player.timeStartFlash = 0;
+        this.player.flashDuration = 2000; // milliseconds
 
         this.player.collisionMargin = {
             left: 6,
@@ -525,6 +534,25 @@ SpaceshipGame.prototype = {
 
             if (sprite.visible && this.isSpriteInView(sprite)) {
                 this.context.translate(-sprite.hOffset, 0);
+
+                // if player.flashing is true, make the player sprite flash
+                if (sprite === this.player && this.player.flashing) {
+                    let now = Date.now();
+                    if (now - this.player.lastDamageTime < this.player.flashDuration) {
+                        // alternate alpha between 0.05 and 1 every 200ms to create flashing effect (i had to look up how to do this lol)
+                        this.context.globalAlpha = (Math.floor((now - this.player.lastDamageTime) / 200) % 2 === 0) ? 0.05 : 1;
+                    }
+                    else {
+                        // stop flashing
+                        this.context.globalAlpha = 1;
+                        this.player.flashing = false;
+                    }
+                }
+                else {
+                    this.context.globalAlpha = 1;
+                }
+
+                // draw sprite
                 sprite.draw(this.context);
                 sprite.drawCollisionRectangle(this.context);
                 this.context.translate(sprite.hOffset, 0);
@@ -542,7 +570,37 @@ SpaceshipGame.prototype = {
         } else {
             this.lastAnimationFrameTime += (now - this.pauseStartTime);
         }
-    }
+    },
+
+    takePlayerDamage: function (damage) {
+        if (!this.player) return;
+
+        let now = Date.now();
+
+        if (now - this.player.lastDamageTime < this.player.damageCooldown) {
+            return; // cooldown not yet passed
+        }
+
+        this.player.flashing = true;
+        this.player.lastDamageTime = now;
+
+        this.player.health -= damage;
+        this.revealToast("Player took " + damage + " damage!", 3000);
+        console.log("Player health: " + this.player.health);
+
+        if (this.player.health <= 0) {
+            this.killPlayer();
+        }
+    },
+
+    killPlayer: function () {
+        console.log("Player has been killed!");
+        this.player.visible = false;
+        this.player.dead = true;
+        this.player = null;
+
+        this.revealToast("Game Over!", 3000);
+    },
 };
 
 window.onkeydown = function (event) {

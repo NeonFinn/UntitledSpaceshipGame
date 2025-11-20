@@ -124,7 +124,7 @@ let SpaceshipGame = function () {
                     this.processShipHitCollision(sprite);
                 }
             } else if (sprite.type === 'playerShot') {
-                if (otherSprite.health !== undefined) { // process if enemy has health
+                if (otherSprite.health !== undefined && otherSprite !== spaceshipGame.playerP) { // process if enemy has health
                     this.processBulletCollision(sprite, otherSprite);
                 }
             }

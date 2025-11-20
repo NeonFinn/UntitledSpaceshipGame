@@ -332,9 +332,7 @@ SpaceshipGame.prototype = {
 
         createBackgroundPlanets(this); // handled by backgroundplanets.js
 
-        createBluePowerUps(this);  // handled by powerups.js
-        createRedPowerUps(this);
-        createGreenPowerUps(this);
+        createPowerUps(this);  // handled by powerups.js
         createEnemies(this);
 
         createObstacles(this); // handled by obstacles.js

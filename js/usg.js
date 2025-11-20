@@ -118,7 +118,7 @@ let SpaceshipGame = function () {
 
         processCollision: function (sprite, otherSprite) {
             if (sprite.type === 'sparrow_drone') {
-                if (otherSprite.type === 'power_up') {
+                if (otherSprite.type.includes('power_up')) {
                     this.processPowerUpCollision(sprite, otherSprite);
                 } else if (otherSprite.type === 'follow' || otherSprite.type === 'shot' || otherSprite.type === 'drone' || otherSprite.type === 'sine' || otherSprite.type === 'asteroid') {
                     this.processShipHitCollision(sprite);
@@ -131,8 +131,27 @@ let SpaceshipGame = function () {
         },
 
         processPowerUpCollision: function (sprite, otherSprite) {
-            // TODO: Implement power-up functions
-            console.log("Collision with power-up");
+            let color = otherSprite.type.split('_', 1)[0];
+
+            otherSprite.visible = false;
+
+            switch (color) {
+                case 'red':
+                    if (sprite.weaponStage < 2) sprite.weaponStage++;
+                    break;
+                case 'blue':
+                    if (sprite.movementStage < 2) sprite.movementStage++;
+                    break;
+                case 'green':
+                    if (sprite.health < 3) sprite.health++;
+                    if (sprite.health > 3) sprite.health = 3;
+                    break;
+                case 'yellow':
+                    if (sprite.bulletStage < 2) sprite.bulletStage++;
+                    break;
+                default:
+                    break;
+            }
         },
 
         processShipHitCollision: function (sprite) {
@@ -159,8 +178,26 @@ let SpaceshipGame = function () {
                 }
             }
         }
-    }
+    };
 
+    this.checkMovementPowerUpBehavior = {
+        execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
+            switch (sprite.movementStage) {
+                case 2:
+                    sprite.velocityX = 100;
+                    sprite.velocityY = 100;
+                    break;
+                case 1:
+                    sprite.velocityX = 75;
+                    sprite.velocityY = 75;
+                    break;
+                default:
+                    sprite.velocityX = 50;
+                    sprite.velocityY = 50;
+                    break;
+            }
+        }
+    };
 }
 
 SpaceshipGame.prototype = {
@@ -314,12 +351,8 @@ SpaceshipGame.prototype = {
 
         createBackgroundPlanets(this); // handled by backgroundplanets.js
 
-        createBluePowerUps(this);  // handled by powerups.js
-        createRedPowerUps(this);
-        createGreenPowerUps(this);
+        createPowerUps(this);  // handled by powerups.js
         createEnemies(this);
-
-        setupPowerUpCollisions(this); // handled by powerups.js
 
         createObstacles(this); // handled by obstacles.js
 
@@ -354,7 +387,7 @@ SpaceshipGame.prototype = {
         let PLAYER_HEIGHT = 32;
         let STARTING_HEIGHT = 200;
 
-        this.player = createSprite("sparrow_drone", 90, [this.playerMovement, this.collideBehavior]);
+        this.player = createSprite("sparrow_drone", 90, [this.playerMovement, this.collideBehavior, this.checkMovementPowerUpBehavior]);
 
         this.player.y = STARTING_HEIGHT;
         this.player.top = STARTING_HEIGHT - PLAYER_HEIGHT;
@@ -363,6 +396,17 @@ SpaceshipGame.prototype = {
         this.player.velocityY = 50;
         this.player.width = 32;
         this.player.height = PLAYER_HEIGHT;
+        this.player.weaponStage = 0;  // For weapon power (multiple bullets)
+        this.player.movementStage = 0;  // For movement speed
+        this.player.bulletStage = 0;  // For bullet speed
+        this.player.health = 3;
+
+        this.player.collisionMargin = {
+            left: 6,
+            right: 8,
+            top: 6,
+            bottom: 6
+        }
 
         this.sprites.push(this.player);
     },
@@ -451,7 +495,6 @@ SpaceshipGame.prototype = {
         this.updateSprites(now);
         this.drawSprites();
         this.checkObstacleCollisions();
-        this.checkPowerUpCollisions();
     },
 
     updateSprites: function (now) {

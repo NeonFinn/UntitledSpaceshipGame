@@ -15,8 +15,8 @@ function createBackgroundPlanets(game) {
 
         planet.left = data.left;
         planet.top = data.top;
-        planet.width = 100;
-        planet.height = 100;
+        planet.width = 0;
+        planet.height = 0;
         planet.hOffset = 0;
         planet.velocityX = data.velocityX;
         planet.opacity = 0.3; // makes it obvious it's a background element

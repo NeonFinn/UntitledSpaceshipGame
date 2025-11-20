@@ -1501,7 +1501,7 @@ Sprite.prototype = {
             left: this.left - this.hOffset + this.collisionMargin.left,
             right: this.left - this.hOffset + this.width - this.collisionMargin.right,
             top: this.top + this.collisionMargin.top,
-            bottom: this.top + this.collisionMargin.top + this.height - this.collisionMargin.bottom,
+            bottom: this.top + this.height - this.collisionMargin.bottom,
             centerX: this.left + this.width / 2,
             centerY: this.top + this.height / 2
         }

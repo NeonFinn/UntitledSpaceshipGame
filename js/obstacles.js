@@ -82,4 +82,10 @@ function createObstacles(game) {
             }
         }
     };
+    pushNewObstacles = function(){
+        obstacleX = hOffset + obstacle.width + screen.width
+        obstacleY = Math.floor(Math.random * screen.height) + 1
+        console.log(obstacleX);
+        console.log(obstacleY);
+    }
 }

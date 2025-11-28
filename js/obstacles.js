@@ -1,7 +1,7 @@
 // obstacles.js
 
 function createObstacles(game) {
-    const obstacleData = [
+     let obstacleData = [
         { left: 500, top: 180 },
         { left: 900, top: 220 },
         { left: 1300, top: 160 }
@@ -21,9 +21,16 @@ function createObstacles(game) {
         obstacle.hOffset = 0;
         obstacle.velocityX = 25; // scroll speed like power-ups
         obstacle.collider = true; // mark as collidable
-
+        pushNewObstacles = function(){
+        obstacleX = Math.floor(obstacle.hOffset + obstacle.width + screen.width);
+        obstacleY = Math.floor(Math.random() * 400) + 1;
+        console.log(obstacleX);
+        console.log(obstacleY);
+        obstacleData.push(obstacleX, obstacleY)
+        }
+        setInterval(pushNewObstacles, 5000)
         game.obstacles.push(obstacle);
-        game.sprites.push(obstacle);
+        game.sprites.push(obstacle); 
     }
 
     game.checkObstacleCollisions = function () {
@@ -45,6 +52,8 @@ function createObstacles(game) {
             }
         }
     };
+   
+}
 
     game.resolveObstacleCollision = function (player, obstacle) {
         const obstacleLeft = obstacle.left - obstacle.hOffset;
@@ -82,10 +91,4 @@ function createObstacles(game) {
             }
         }
     };
-    pushNewObstacles = function(){
-        obstacleX = hOffset + obstacle.width + screen.width
-        obstacleY = Math.floor(Math.random * screen.height) + 1
-        console.log(obstacleX);
-        console.log(obstacleY);
-    }
-}
+    

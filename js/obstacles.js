@@ -6,13 +6,10 @@ function createObstacles(game) {
         { left: 900, top: 220 },
         { left: 1300, top: 160 }
     ];
-
     game.obstacles = [];
-
     for (let i = 0; i < obstacleData.length; i++) {
         // dummy behavior on obstacle because without one it won't render
-        let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
-
+    let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
         // object properties
         obstacle.left = obstacleData[i].left;
         obstacle.top = obstacleData[i].top;
@@ -21,17 +18,26 @@ function createObstacles(game) {
         obstacle.hOffset = 0;
         obstacle.velocityX = 25; // scroll speed like power-ups
         obstacle.collider = true; // mark as collidable
-        pushNewObstacles = function(){
-        obstacleX = Math.floor(obstacle.hOffset + obstacle.width + screen.width);
-        obstacleY = Math.floor(Math.random() * 400) + 1;
-        console.log(obstacleX);
-        console.log(obstacleY);
-        obstacleData.push(obstacleX, obstacleY)
-        }
-        setInterval(pushNewObstacles, 5000)
+       
         game.obstacles.push(obstacle);
         game.sprites.push(obstacle); 
     }
+    console.log(obstacleData) 
+    pushNewObstacles = function(){
+        let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
+        obstacle.width = 83;
+        obstacle.height = 79;
+        obstacle.hOffset = 0;
+        obstacle.velocityX = 25; // scroll speed like power-ups
+        obstacle.collider = true; // mark as collidable\
+        obstacleX = Math.floor(obstacle.hOffset + obstacle.width + screen.width);
+        obstacleY = Math.floor(Math.random() * 400) + 1;
+        obstacle.left = obstacleX;
+        obstacle.top = obstacleY;
+        game.obstacles.push(obstacle);
+        game.sprites.push(obstacle);
+        }
+    setInterval(pushNewObstacles, 5000)
 
     game.checkObstacleCollisions = function () {
         const player = this.player;

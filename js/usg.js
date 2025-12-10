@@ -498,6 +498,7 @@ SpaceshipGame.prototype = {
 
     draw: function (now) {
         this.setOffsets(now);
+        this.setSpritePositions(now);
         this.drawBackground();
         this.updateSprites(now);
         this.drawSprites();
@@ -505,10 +506,12 @@ SpaceshipGame.prototype = {
     },
 
     updateSprites: function (now) {
-        let sprite;
-
-        for (let i = 0; i < this.sprites.length; i++) {
-            sprite = this.sprites[i];
+        for (let sprite of this.sprites) {
+            if (!sprite.visible || this.isSpritePastPlayArea(sprite)) {
+                this.sprites.splice(this.sprites.indexOf(sprite), 1);
+                this.tryDeleteFromArrays(sprite);
+                continue;
+            }
 
             if (sprite.visible && this.isSpriteInView(sprite)) {
                 sprite.update(now, this.fps, this.context, this.lastAnimationFrameTime);
@@ -522,6 +525,22 @@ SpaceshipGame.prototype = {
 
     isSpriteInView: function (sprite) {
         return sprite.left + sprite.width > sprite.hOffset && sprite.left < sprite.hOffset + this.canvas.width;
+    },
+
+    isSpritePastPlayArea: function (sprite) {
+        return sprite.left + sprite.width < sprite.hOffset;
+    },
+
+    tryDeleteFromArrays: function (sprite) {
+        let arrays = [this.powerUps, this.shots, this.enemies];
+
+        for (let array of arrays) {
+            if (array.indexOf(sprite) !== -1) {
+                console.log("deleting from", arrays.indexOf(array))
+                array.splice(array.indexOf(sprite), 1);
+                return;
+            }
+        }
     },
 
     drawSprites: function () {

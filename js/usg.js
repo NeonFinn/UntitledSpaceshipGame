@@ -365,25 +365,9 @@ SpaceshipGame.prototype = {
         this.addSpritesToSpriteArray();
     },
 
-    initializeSprites: function () {
-        this.positionSprites(this.powerUps, this.powerUpData);
-        this.positionSprites(this.enemies, this.enemyData);
-    },
-
     addSpritesToSpriteArray: function () {
         for (let i = 0; i < this.powerUps.length; i++) {
             this.sprites.push(this.powerUps[i]);
-        }
-    },
-
-    positionSprites: function (sprites, data) {
-        let sprite;
-
-        for (let i = 0; i < sprites.length; i++) {
-            sprite = sprites[i];
-
-            sprite.top = data[i].top;
-            sprite.left = data[i].left;
         }
     },
 
@@ -399,8 +383,6 @@ SpaceshipGame.prototype = {
         this.player.left = PLAYER_LEFT;
         this.player.velocityX = 50;
         this.player.velocityY = 50;
-        this.player.width = 32;
-        this.player.height = PLAYER_HEIGHT;
         this.player.weaponStage = 0;  // For weapon power (multiple bullets)
         this.player.movementStage = 0;  // For movement speed
         this.player.bulletStage = 0;  // For bullet speed

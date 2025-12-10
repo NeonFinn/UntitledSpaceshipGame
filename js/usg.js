@@ -352,15 +352,15 @@ SpaceshipGame.prototype = {
     },
 
     createSprites: function () {
-        this.createPlayerSprite();
-
         createBackgroundPlanets(this); // handled by backgroundplanets.js
 
         createPowerUps(this);  // handled by powerups.js
-        createEnemies(this);
 
         createObstacles(this); // handled by obstacles.js
 
+        createEnemies(this); // handled by enemies.js
+
+        this.createPlayerSprite();
 
         this.addSpritesToSpriteArray();
     },

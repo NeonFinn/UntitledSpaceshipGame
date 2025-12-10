@@ -1,26 +1,27 @@
 // obstacles.js
 
 function createObstacles(game) {
-     let obstacleData = [
-        { left: 500, top: 150 },
-        { left: 900, top: 400 },
-        { left: 1300, top: 200 },
-        { left: 1700, top: 350 },
-        { left: 2100, top: 250 },
-        { left: 2500, top: 450 },
-        { left: 2900, top: 250 },
-        { left: 3300, top: 300 },
-        { left: 3700, top: 150 },
-        { left: 4100, top: 400 },
-        { left: 4500, top: 200 },
-        { left: 4900, top: 350 },
-        { left: 5000, top: 250 },
+    let obstacleData = [
+        {left: 500, top: 150},
+        {left: 900, top: 400},
+        {left: 1300, top: 200},
+        {left: 1700, top: 350},
+        {left: 2100, top: 250},
+        {left: 2500, top: 450},
+        {left: 2900, top: 250},
+        {left: 3300, top: 300},
+        {left: 3700, top: 150},
+        {left: 4100, top: 400},
+        {left: 4500, top: 200},
+        {left: 4900, top: 350},
+        {left: 5000, top: 250},
     ];
 
     game.obstacles = [];
+
     for (let i = 0; i < obstacleData.length; i++) {
         // dummy behavior on obstacle because without one it won't render
-    let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
+        let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
         // object properties
         obstacle.left = obstacleData[i].left;
         obstacle.top = obstacleData[i].top;
@@ -29,26 +30,10 @@ function createObstacles(game) {
         obstacle.hOffset = 0;
         obstacle.velocityX = 25; // scroll speed like power-ups
         obstacle.collider = true; // mark as collidable
-       
-        game.obstacles.push(obstacle);
-        game.sprites.push(obstacle); 
-    }
-    console.log(obstacleData) 
-    pushNewObstacles = function(){
-        let obstacle = createSprite("asteroid", 0, [new CycleBehavior(0, 0)]);
-        obstacle.width = 83;
-        obstacle.height = 79;
-        obstacle.hOffset = 0;
-        obstacle.velocityX = 25; // scroll speed like power-ups
-        obstacle.collider = true; // mark as collidable\
-        obstacleX = Math.floor(obstacle.hOffset + obstacle.width + screen.width);
-        obstacleY = Math.floor(Math.random() * 400) + 1;
-        obstacle.left = obstacleX;
-        obstacle.top = obstacleY;
+
         game.obstacles.push(obstacle);
         game.sprites.push(obstacle);
-        }
-    setInterval(pushNewObstacles, 5000)
+    }
 
     game.checkObstacleCollisions = function () {
         const player = this.player;
@@ -69,8 +54,6 @@ function createObstacles(game) {
             }
         }
     };
-   
-}
 
     game.resolveObstacleCollision = function (player, obstacle) {
         const obstacleLeft = obstacle.left - obstacle.hOffset;
@@ -78,9 +61,11 @@ function createObstacles(game) {
         const obstacleTop = obstacle.top;
         const obstacleBottom = obstacleTop + obstacle.height;
 
-        const playerLeft = player.left;
-        const playerRight = player.left + player.width;
-        const playerTop = player.top;
+        const playerCollisionRect = player.calculateCollisionRectangle()
+
+        const playerLeft = playerCollisionRect.left;
+        const playerRight = playerCollisionRect.right;
+        const playerTop = playerCollisionRect.top;
         const playerBottom = player.top + player.height;
 
         // find overlap on both axes
@@ -88,24 +73,22 @@ function createObstacles(game) {
         const overlapY = Math.min(playerBottom, obstacleBottom) - Math.max(playerTop, obstacleTop);
 
         // if no overlap, return
-        if (overlapX <= 0 || overlapY <= 0) return;
+        if (overlapX < 1 || overlapY < 1) return;
 
         // smallest overlap determines which axis to resolve
         if (overlapX < overlapY) {
             if (playerLeft < obstacleLeft) { // dont allow player to move through obstacle on X axis
                 player.left -= overlapX; // push left
-            }
-            else {
+            } else {
                 player.left += overlapX; // push right
             }
-        }
-        else {
+        } else {
             if (playerTop < obstacleTop) { // dont allow player to move through obstacle on Y axis
                 player.top -= overlapY; // push up
-            }
-            else {
+            } else {
                 player.top += overlapY; // push down
             }
         }
     };
+}
     

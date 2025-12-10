@@ -106,9 +106,9 @@ ShieldBehavior.prototype = {
 
         this.getClosestEnemyToPlayer();
 
-        let xTarget = (this.closestEnemy.left - sprite.width / 2) - this.closestEnemy.hOffset;
+        let xTarget = this.closestEnemy.left - this.closestEnemy.hOffset - sprite.width / 2;
         let yTarget = this.closestEnemy.top + (this.closestEnemy.height / 2);
-        let xDistance = xTarget - (sprite.left + sprite.width / 2);
+        let xDistance = xTarget - (sprite.left - sprite.hOffset + sprite.width / 2);
         let yDistance = yTarget - (sprite.top + sprite.height / 2);
         let distance = Math.hypot(xDistance, yDistance);
 
@@ -132,13 +132,15 @@ ShieldBehavior.prototype = {
 
             if (enemy.type === "shield") continue;
 
+            if (!enemy.visible) continue;
+
             let enemyX = (enemy.left + enemy.width / 2) - enemy.hOffset;
             let enemyY = enemy.top + enemy.height / 2;
             let xDist = enemyX - playerCenterX;
             let yDist = enemyY - playerCenterY;
             let dist = Math.abs(Math.hypot(xDist, yDist));
 
-            if (dist < closestDist || !closestDist) {
+            if (!closestDist || dist < closestDist) {
                 closestDist = dist;
                 closestEnemy = enemy;
             }

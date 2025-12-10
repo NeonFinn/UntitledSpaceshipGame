@@ -392,6 +392,7 @@ SpaceshipGame.prototype = {
         this.player.flashing = false;
         this.player.timeStartFlash = 0;
         this.player.flashDuration = 2000; // milliseconds
+        this.player.direction = "right";
 
         this.player.collisionMargin = {
             left: 6,

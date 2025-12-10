@@ -16,10 +16,7 @@ function createEnemies(game) {
         { left: 4550, top: 100, type: "drone" },
         { left: 4850, top: 350, type: "shield" },
         { left: 5000, top: 200, type: "sine" },
-
     ];
-
-    game.enemies = [];
 
     for (let i = 0; i < game.enemyData.length; i++) {
         const data = game.enemyData[i];
@@ -51,6 +48,7 @@ function createEnemies(game) {
         enemy.top = data.top;
         enemy.collider = true;
         enemy.type = data.type;
+        enemy.velocityX = 25;
 
         game.enemies.push(enemy);
         game.sprites.push(enemy);

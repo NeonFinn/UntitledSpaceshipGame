@@ -448,12 +448,26 @@ SpaceshipGame.prototype = {
         let sprite;
 
         for (let i = 0; i < this.sprites.length; i++) {
-            sprite = this.sprites[i];
+            sprite = spaceshipGame.sprites[i];
 
             if (sprite.type === "sparrow_drone") continue;
 
-            if (sprite.velocityX) {
-                sprite.hOffset += sprite.velocityX * (now - this.lastAnimationFrameTime) / 1000;
+            sprite.hOffset += this.backgroundVelocity * (now - this.lastAnimationFrameTime) / 1000;
+        }
+    },
+
+    setSpritePositions: function (now) {
+        let sprite;
+
+        for (let i = 0; i < this.sprites.length; i++) {
+            sprite = spaceshipGame.sprites[i];
+
+            if (sprite.type === "sparrow_drone") continue;
+
+            if (sprite.direction === "left") {
+                sprite.left -= (sprite.velocityX - this.backgroundVelocity) * (now - this.lastAnimationFrameTime) / 1000;
+            } else {
+                sprite.left += (sprite.velocityX + this.backgroundVelocity) * (now - this.lastAnimationFrameTime) / 1000;
             }
         }
     },

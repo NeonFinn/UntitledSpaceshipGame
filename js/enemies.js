@@ -1,10 +1,22 @@
 function createEnemies(game) {
     // Defines initial spawn points and enemy types
     game.enemyData = [
-        {left: 400, top: 100, type: "drone"},
-        {left: 500, top: 160, type: "sine"},
-        {left: 600, top: 220, type: "follow"},
-        {left: 700, top: 260, type: "shield"}
+        { left: 400, top: 100, type: "drone" },
+        { left: 700, top: 300, type: "follow" },
+        { left: 1050, top: 150, type: "shield" },
+        { left: 1400, top: 400, type: "sine" },
+        { left: 1750, top: 100, type: "drone" },
+        { left: 2100, top: 350, type: "sine" },
+        { left: 2450, top: 200, type: "follow" },
+        { left: 2800, top: 450, type: "shield" },
+        { left: 3150, top: 50, type: "sine" },
+        { left: 3500, top: 300, type: "drone" },
+        { left: 3850, top: 150, type: "shield" },
+        { left: 4200, top: 400, type: "follow" },
+        { left: 4550, top: 100, type: "drone" },
+        { left: 4850, top: 350, type: "shield" },
+        { left: 5000, top: 200, type: "sine" },
+
     ];
 
     game.enemies = [];

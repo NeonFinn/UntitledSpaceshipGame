@@ -13,13 +13,13 @@ let playerShoot = function(game){
 
     switch (game.player.bulletStage) {
         case 1:
-            shot1.velocityX = -120;
+            shot1.velocityX = 120;
             break;
         case 2:
-            shot1.velocityX = -160;
+            shot1.velocityX = 160;
             break;
         default:
-            shot1.velocityX = -80;
+            shot1.velocityX = 80;
             break;
     }
 
@@ -59,6 +59,8 @@ let playerShoot = function(game){
     }
 
     for (let shot of shots) {
+        shot.direction = "right";
+
         game.shots.push(shot);
         game.sprites.push(shot);
     }

@@ -1484,6 +1484,7 @@ let Sprite = function (type, artist, behaviors) {
     this.velocityY = 0;
     this.opacity = DEFAULT_OPACITY;
     this.visible = true;
+    this.direction = "left";
 
     this.showCollisionRectangle = false;
 

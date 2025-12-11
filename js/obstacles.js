@@ -3,18 +3,17 @@
 function createObstacles(game) {
     let obstacleData = [
         {left: 500, top: 150},
-        {left: 900, top: 400},
+        {left: 900, top: 300},
         {left: 1300, top: 200},
-        {left: 1700, top: 350},
-        {left: 2100, top: 250},
-        {left: 2500, top: 450},
+        {left: 1700, top: 50},
+        {left: 2100, top: 150},
+        {left: 2500, top: 300},
         {left: 2900, top: 250},
-        {left: 3300, top: 300},
+        {left: 3300, top: 100},
         {left: 3700, top: 150},
-        {left: 4100, top: 400},
+        {left: 4100, top: 50},
         {left: 4500, top: 200},
-        {left: 4900, top: 350},
-        {left: 5000, top: 250},
+        {left: 4900, top: 150},
     ];
 
     game.obstacles = [];

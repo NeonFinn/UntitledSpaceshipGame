@@ -16,7 +16,6 @@ function createPowerUps(game) {
         { left: 4250, top: 350, color: 'blue' },
         { left: 4600, top: 100, color: 'green' },
         { left: 4850, top: 450, color: 'red' },
-        { left: 5000, top: 200, color: 'yellow' },
 ];
 
     for (let i = 0; i < game.powerUpData.length; i++) {

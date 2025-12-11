@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="spawn locations">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/backgroundplanets.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/backgroundplanets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/enemies.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/obstacles.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/obstacles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +243,23 @@
       <option name="project" value="LOCAL" />
       <updated>1765389446378</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="more enemies and move obstacles">
+      <option name="closed" value="true" />
+      <created>1765421017645</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1765421017645</updated>
+    </task>
+    <task id="LOCAL-00018" summary="no powerup right at the end of the level">
+      <option name="closed" value="true" />
+      <created>1765421044280</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1765421044280</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +310,8 @@
     <MESSAGE value="Player cant kill themself anymore" />
     <MESSAGE value="typo" />
     <MESSAGE value="spawn locations" />
-    <option name="LAST_COMMIT_MESSAGE" value="spawn locations" />
+    <MESSAGE value="more enemies and move obstacles" />
+    <MESSAGE value="no powerup right at the end of the level" />
+    <option name="LAST_COMMIT_MESSAGE" value="no powerup right at the end of the level" />
   </component>
 </project>

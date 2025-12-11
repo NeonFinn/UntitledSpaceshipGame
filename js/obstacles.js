@@ -2,7 +2,7 @@
 
 function createObstacles(game) {
     let obstacleData = [
-        {left: 500, top: 150},
+        {left: 500, top: 175},
         {left: 900, top: 300},
         {left: 1300, top: 200},
         {left: 1700, top: 50},

@@ -32,6 +32,9 @@ let SpaceshipGame = function () {
     this.backgroundOffset = 0;
     this.backgroundVelocity = 42;
 
+    // for tracking win condition
+    this.currentWorldX = 0;
+
     // Fog information
     this.fog = new Image();
     this.fog.src = "images/fog.png";
@@ -430,9 +433,16 @@ SpaceshipGame.prototype = {
     },
 
     setBackgroundOffset: function (now) {
-        // main background
-        this.backgroundOffset += this.backgroundVelocity * (now - this.lastAnimationFrameTime) / 1000;
+        // how much the player moved this frame
+        let time = this.backgroundVelocity * (now - this.lastAnimationFrameTime) / 1000;
 
+        // background scroll
+        this.backgroundOffset += time;
+
+        // non-resetting world x position for win condition
+        this.currentWorldX += time;
+
+        // loop background
         if (this.backgroundOffset < 0 || this.backgroundOffset > this.background.width) {
             this.backgroundOffset = 0;
         }
@@ -503,6 +513,10 @@ SpaceshipGame.prototype = {
         this.updateSprites(now);
         this.drawSprites();
         this.checkObstacleCollisions();
+
+        if (this.currentWorldX >= 7500) {
+            this.endGame();
+        }
     },
 
     updateSprites: function (now) {
@@ -618,6 +632,12 @@ SpaceshipGame.prototype = {
 
         this.revealToast("Game Over!", 3000);
     },
+
+    endGame: function () {
+        this.revealToast("You Win!", 999999999);
+
+        this.paused = true;
+    }
 };
 
 window.onkeydown = function (event) {

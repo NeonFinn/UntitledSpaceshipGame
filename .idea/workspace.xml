@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="end of game logic works, and fixed planets deleting the moment they touched the edge of the canvas">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="more spawn changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/backgroundplanets.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/backgroundplanets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/enemies.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/obstacles.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/obstacles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/powerups.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/powerups.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765426197842</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="more spawn changes">
+      <option name="closed" value="true" />
+      <created>1765520901541</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1765520901541</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +329,7 @@
     <MESSAGE value="more enemies and move obstacles" />
     <MESSAGE value="no powerup right at the end of the level" />
     <MESSAGE value="end of game logic works, and fixed planets deleting the moment they touched the edge of the canvas" />
-    <option name="LAST_COMMIT_MESSAGE" value="end of game logic works, and fixed planets deleting the moment they touched the edge of the canvas" />
+    <MESSAGE value="more spawn changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="more spawn changes" />
   </component>
 </project>

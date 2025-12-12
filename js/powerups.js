@@ -2,20 +2,18 @@
 
 function createPowerUps(game) {
     game.powerUpData = [
-        { left: 300, top: 50, color: 'red' },
-        { left: 650, top: 400, color: 'green' },
-        { left: 1000, top: 200, color: 'yellow' },
-        { left: 1350, top: 350, color: 'blue' },
-        { left: 1750, top: 100, color: 'yellow' },
-        { left: 2100, top: 450, color: 'red' },
-        { left: 2450, top: 300, color: 'blue' },
-        { left: 2800, top: 150, color: 'green' },
-        { left: 3200, top: 400, color: 'red' },
-        { left: 3550, top: 50, color: 'yellow' },
-        { left: 3900, top: 250, color: 'green' },
-        { left: 4250, top: 350, color: 'blue' },
-        { left: 4600, top: 100, color: 'green' },
-        { left: 4850, top: 450, color: 'red' },
+        { left: 2000, top: 150, color: 'blue' },
+        { left: 2500, top: 100, color: 'yellow' },
+        { left: 3000, top: 250, color: 'green' },
+        { left: 3500, top: 300, color: 'blue' },
+        { left: 4000, top: 150, color: 'red' },
+        { left: 4500, top: 200, color: 'green' },
+        { left: 5000, top: 100, color: 'yellow' },
+        { left: 5500, top: 150, color: 'blue' },
+        { left: 6000, top: 300, color: 'red' },
+        { left: 6500, top: 100, color: 'yellow' },
+        { left: 7000, top: 200, color: 'green' },
+
 ];
 
     for (let i = 0; i < game.powerUpData.length; i++) {

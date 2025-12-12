@@ -52,6 +52,7 @@ let SpaceshipGame = function () {
     this.windowHasFocus = true;
     this.countdownInProgress = false;
     this.gameStarted = false;
+    this.gameOver = false;
 
     // Sprites
     this.powerUps = [];
@@ -634,8 +635,8 @@ SpaceshipGame.prototype = {
     },
 
     endGame: function () {
+        this.gameOver = true;
         this.revealToast("You Win!", 999999999);
-
         this.paused = true;
     }
 };
@@ -668,6 +669,8 @@ window.onblur = function (event) {
 };
 
 window.onfocus = function (event) {
+    if (spaceshipGame.gameOver) return;
+
     let originalFont = spaceshipGame.toastElement.style.fontSize;
     let DIGIT_DISPLAY_DURATION = 1000;
 

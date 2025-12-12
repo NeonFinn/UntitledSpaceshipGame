@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="more spawn changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/backgroundplanets.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/backgroundplanets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/enemies.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/enemies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/obstacles.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/obstacles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/powerups.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/powerups.js" afterDir="false" />
-    </list>
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="fixed win text being overridden by pause countdown and completed the bulk of the level composition" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -275,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765520901541</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fixed win text being overridden by pause countdown and completed the bulk of the level composition">
+      <option name="closed" value="true" />
+      <created>1765560980866</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1765560980866</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +332,7 @@
     <MESSAGE value="no powerup right at the end of the level" />
     <MESSAGE value="end of game logic works, and fixed planets deleting the moment they touched the edge of the canvas" />
     <MESSAGE value="more spawn changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="more spawn changes" />
+    <MESSAGE value="fixed win text being overridden by pause countdown and completed the bulk of the level composition" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed win text being overridden by pause countdown and completed the bulk of the level composition" />
   </component>
 </project>

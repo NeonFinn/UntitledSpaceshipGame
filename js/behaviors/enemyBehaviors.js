@@ -101,6 +101,8 @@ ShieldBehavior = function (speed) {
 
 ShieldBehavior.prototype = {
     execute: function (sprite, now, fps, context, lastAnimationFrameTime) {
+        if (!spaceshipGame.player.visible) return;
+
         let pixelsToMoveX = (now - lastAnimationFrameTime) / 1000;
         let pixelsToMoveY = (now - lastAnimationFrameTime) / 1000;
 

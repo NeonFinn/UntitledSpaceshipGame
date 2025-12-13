@@ -557,6 +557,8 @@ SpaceshipGame.prototype = {
     },
 
     isSpritePastPlayArea: function (sprite) {
+        if (sprite.type === "sparrow_drone") return false;
+
         return sprite.left + sprite.width < sprite.hOffset;
     },
 
@@ -642,14 +644,17 @@ SpaceshipGame.prototype = {
     },
 
     killPlayer: function () {
+        const RESET_DELAY = 3000;
+
         console.log("Player has been killed!");
         this.gameOver = true;
         this.togglePaused();
         this.player.visible = false;
-        this.player.dead = true;
-        this.player = null;
+        this.revealToast("Game Over!", RESET_DELAY);
 
-        this.revealToast("Game Over!", 3000);
+        setTimeout(() => {
+            this.resetGame();
+        }, RESET_DELAY + 500);
     },
 
     updatePowerUpDisplay: function () {
@@ -687,6 +692,37 @@ SpaceshipGame.prototype = {
         this.gameOver = true;
         this.togglePaused();
         this.revealToast("You Win!", 999999999);
+    },
+
+    resetGame: function () {
+        this.resetOffsets();
+        this.resetPlayer();
+        this.resetSprites();
+        this.updateHealthDisplay();
+        this.updatePowerUpDisplay();
+        this.togglePaused();
+        this.score = 0;
+        this.scoreElement.innerHTML = this.score;
+        this.gameOver = false;
+        this.currentWorldX = 0;
+    },
+
+    resetPlayer: function () {
+        this.createPlayerSprite();
+    },
+
+    resetOffsets: function () {
+        this.backgroundVelocity = 0;
+        this.backgroundOffset = 0;
+    },
+
+    resetSprites: function () {
+        this.sprites = [];
+        this.enemies = [];
+        this.powerUps = [];
+        this.obstacles = [];
+
+        this.createSprites();
     }
 };
 

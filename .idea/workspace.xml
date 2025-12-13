@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Fix planets&#10;&#10;Fixed the planet widths and heights being incorrect.">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Fix game-end bugs&#10;&#10;Fixed crashes that would happen when the game ended due to not pausing the game properly.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/behaviors/enemyBehaviors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -303,7 +304,23 @@
       <option name="project" value="LOCAL" />
       <updated>1765646114376</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Add score&#10;&#10;Added scores to power-ups and enemies and tied it to the UI.">
+      <option name="closed" value="true" />
+      <created>1765647066691</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1765647066691</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fix game-end bugs&#10;&#10;Fixed crashes that would happen when the game ended due to not pausing the game properly.">
+      <option name="closed" value="true" />
+      <created>1765647262733</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1765647262733</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +379,8 @@
     <MESSAGE value="Update HUD&#10;&#10;Added the health and power-up indicators to the HUD." />
     <MESSAGE value="Add font&#10;&#10;Forgot the font in the last commit lmao" />
     <MESSAGE value="Fix planets&#10;&#10;Fixed the planet widths and heights being incorrect." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix planets&#10;&#10;Fixed the planet widths and heights being incorrect." />
+    <MESSAGE value="Add score&#10;&#10;Added scores to power-ups and enemies and tied it to the UI." />
+    <MESSAGE value="Fix game-end bugs&#10;&#10;Fixed crashes that would happen when the game ended due to not pausing the game properly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix game-end bugs&#10;&#10;Fixed crashes that would happen when the game ended due to not pausing the game properly." />
   </component>
 </project>

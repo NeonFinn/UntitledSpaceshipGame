@@ -24,13 +24,16 @@ let SpaceshipGame = function () {
     this.ANIMATION_RATE = 30;
 
     this.PAUSED_CHECK_INTERVAL = 200;
-    this.SHOTS_INTERVAL = 200;
+    this.SHOTS_INTERVAL = 500;
     this.SHORT_DELAY = 50; // lmao
 
     this.POWER_UP_CYCLE_DURATION = 100;
 
     // Score information
     this.score = 0;
+
+    // Last shot time
+    this.lastShot = 0;
 
     // Background information
     this.background = new Image();
@@ -732,7 +735,8 @@ window.onkeydown = function (event) {
     if ((key === 'p' || key === 'Escape') && !spaceshipGame.gameOver) {
         spaceshipGame.togglePaused();
     }
-    if (key === 'j' || key === 'z' || key === ' ') {
+    if ((key === 'j' || key === 'z' || key === ' ') && (+new Date() > spaceshipGame.lastShot + spaceshipGame.SHOTS_INTERVAL)) {
+        spaceshipGame.lastShot = +new Date();
         playerShoot(spaceshipGame);
     }
 

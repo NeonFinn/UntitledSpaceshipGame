@@ -37,6 +37,7 @@ DroneBehavior.prototype = {
             this.dashing = !this.dashing;
         }
 
+        sprite.velocityX = 0;
         this.dash(sprite, now, lastAnimationFrameTime);
     },
 
@@ -45,7 +46,7 @@ DroneBehavior.prototype = {
 
         let pixelsToMoveX = (now - lastAnimationFrameTime) / 1000;
         let pixelsToMoveY = (now - lastAnimationFrameTime) / 1000;
-        let xDistance = spaceshipGame.player.left - sprite.left;
+        let xDistance = spaceshipGame.player.left - sprite.left + sprite.hOffset;
         let yDistance = spaceshipGame.player.top - sprite.top;
         let distance = Math.hypot(xDistance, yDistance);  // Used for normalization
         let xDirection = xDistance / distance;  // Normalizes the distance to get a direction

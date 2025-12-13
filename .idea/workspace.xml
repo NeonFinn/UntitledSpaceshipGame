@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="fixed win text being overridden by pause countdown and completed the bulk of the level composition">
+    <list default="true" id="418d1c5b-9d0a-4d77-9b44-f48a291c7c80" name="Changes" comment="Fix planets&#10;&#10;Fixed the planet widths and heights being incorrect.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/usg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/usg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +279,31 @@
       <option name="project" value="LOCAL" />
       <updated>1765560980866</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Update HUD&#10;&#10;Added the health and power-up indicators to the HUD.">
+      <option name="closed" value="true" />
+      <created>1765646035337</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1765646035337</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Add font&#10;&#10;Forgot the font in the last commit lmao">
+      <option name="closed" value="true" />
+      <created>1765646057895</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1765646057895</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fix planets&#10;&#10;Fixed the planet widths and heights being incorrect.">
+      <option name="closed" value="true" />
+      <created>1765646114376</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1765646114376</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +359,9 @@
     <MESSAGE value="end of game logic works, and fixed planets deleting the moment they touched the edge of the canvas" />
     <MESSAGE value="more spawn changes" />
     <MESSAGE value="fixed win text being overridden by pause countdown and completed the bulk of the level composition" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed win text being overridden by pause countdown and completed the bulk of the level composition" />
+    <MESSAGE value="Update HUD&#10;&#10;Added the health and power-up indicators to the HUD." />
+    <MESSAGE value="Add font&#10;&#10;Forgot the font in the last commit lmao" />
+    <MESSAGE value="Fix planets&#10;&#10;Fixed the planet widths and heights being incorrect." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix planets&#10;&#10;Fixed the planet widths and heights being incorrect." />
   </component>
 </project>

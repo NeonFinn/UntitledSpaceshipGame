@@ -29,6 +29,9 @@ let SpaceshipGame = function () {
 
     this.POWER_UP_CYCLE_DURATION = 100;
 
+    // Score information
+    this.score = 0;
+
     // Background information
     this.background = new Image();
     this.backgroundOffset = 0;
@@ -152,6 +155,7 @@ let SpaceshipGame = function () {
                 case 'green':
                     if (sprite.health < 3) sprite.health++;
                     if (sprite.health > 3) sprite.health = 3;
+                    spaceshipGame.updateHealthDisplay();
                     break;
                 case 'yellow':
                     if (sprite.bulletStage < 2) sprite.bulletStage++;
@@ -161,6 +165,7 @@ let SpaceshipGame = function () {
             }
 
             spaceshipGame.updatePowerUpDisplay();
+            spaceshipGame.awardPoints(otherSprite);
         },
 
         processShipHitCollision: function (sprite) {
@@ -174,6 +179,7 @@ let SpaceshipGame = function () {
 
             if (otherSprite.health <= 0) {
                 otherSprite.visible = false;
+                spaceshipGame.awardPoints(otherSprite);
                 console.log("Enemy destroyed!");
             }
         },
@@ -654,6 +660,25 @@ SpaceshipGame.prototype = {
 
     updateHealthDisplay: function () {
         this.healthElement.innerHTML = ['AAA', 'AAB', 'AAC', 'ABC', 'ACC', 'BCC', 'CCC'].reverse()[this.player.health * 2];
+    },
+
+    awardPoints: function (sprite) {
+        switch (sprite.type) {
+            case 'follow':
+                this.score += 200;
+                break;
+            case 'sine':
+                this.score += 300;
+                break;
+            case 'shield':
+                this.score += 400;
+                break;
+            default:
+                this.score += 100;
+                break;
+        }
+
+        this.scoreElement.innerHTML = this.score;
     },
 
     endGame: function () {

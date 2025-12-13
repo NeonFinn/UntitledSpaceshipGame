@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
+@font-face {
+    font-family: 'USG Icons';
+    src: url('./fonts/USG-Icons.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    font-family: 'USG Icons', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: 1.2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     font-family: "DotGothic16", sans-serif;
     color: white;
@@ -41,6 +59,32 @@ body {
 #fps {
     position: absolute;
     margin-top: -2em;
+
+    transition: opacity 5s;
+
+    opacity: 0;
+    display: none;
+    z-index: 1;
+}
+
+#health {
+    position: absolute;
+    margin-top: 1.2em;
+    margin-left: 170px;
+    top: 0;
+
+    transition: opacity 5s;
+
+    opacity: 0;
+    display: none;
+    z-index: 1;
+}
+
+#power-ups {
+    position: absolute;
+    margin-top: 1.2em;
+    margin-left: 550px;
+    top: 0;
 
     transition: opacity 5s;
 

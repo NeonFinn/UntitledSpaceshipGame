@@ -7,6 +7,8 @@ let SpaceshipGame = function () {
 
     // HTML elements
     this.fpsElement = document.getElementById("fps");
+    this.healthElement = document.getElementById("health");
+    this.powerUpElement = document.getElementById("power-ups");
     this.toastElement = document.getElementById("toast");
     this.instructionsElement = document.getElementById("instructions");
     this.scoreElement = document.getElementById("score");
@@ -157,6 +159,8 @@ let SpaceshipGame = function () {
                 default:
                     break;
             }
+
+            spaceshipGame.updatePowerUpDisplay();
         },
 
         processShipHitCollision: function (sprite) {
@@ -297,10 +301,14 @@ SpaceshipGame.prototype = {
 
         this.scoreElement.style.display = "block";
         this.fpsElement.style.display = "block";
+        this.healthElement.style.display = "block";
+        this.powerUpElement.style.display = "block";
 
         setTimeout(function () {
             spaceshipGame.scoreElement.style.opacity = DIM;
             spaceshipGame.fpsElement.style.opacity = DIM;
+            spaceshipGame.healthElement.style.opacity = DIM;
+            spaceshipGame.powerUpElement.style.opacity = DIM;
         }, this.SHORT_DELAY);
     },
 
@@ -320,7 +328,7 @@ SpaceshipGame.prototype = {
     },
 
     revealTopChrome: function () {
-        this.fadeInElements(this.fpsElement, this.scoreElement);
+        this.fadeInElements(this.fpsElement, this.scoreElement, this.healthElement, this.powerUpElement);
     },
 
     revealInitialToast: function () {
@@ -620,6 +628,8 @@ SpaceshipGame.prototype = {
         this.revealToast("Player took " + damage + " damage!", 3000);
         console.log("Player health: " + this.player.health);
 
+        this.updateHealthDisplay();
+
         if (this.player.health <= 0) {
             this.killPlayer();
         }
@@ -632,6 +642,18 @@ SpaceshipGame.prototype = {
         this.player = null;
 
         this.revealToast("Game Over!", 3000);
+    },
+
+    updatePowerUpDisplay: function () {
+        let speedDisplay = ['D', 'E', 'F'][this.player.movementStage];
+        let laserDisplay = ['G', 'H', 'I'][this.player.weaponStage];
+        let laserSpeedDisplay = ['J', 'K', 'L'][this.player.bulletStage];
+
+        this.powerUpElement.innerHTML = speedDisplay + laserDisplay + laserSpeedDisplay;
+    },
+
+    updateHealthDisplay: function () {
+        this.healthElement.innerHTML = ['AAA', 'AAB', 'AAC', 'ABC', 'ACC', 'BCC', 'CCC'].reverse()[this.player.health * 2];
     },
 
     endGame: function () {

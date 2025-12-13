@@ -643,6 +643,8 @@ SpaceshipGame.prototype = {
 
     killPlayer: function () {
         console.log("Player has been killed!");
+        this.gameOver = true;
+        this.togglePaused();
         this.player.visible = false;
         this.player.dead = true;
         this.player = null;
@@ -683,15 +685,15 @@ SpaceshipGame.prototype = {
 
     endGame: function () {
         this.gameOver = true;
+        this.togglePaused();
         this.revealToast("You Win!", 999999999);
-        this.paused = true;
     }
 };
 
 window.onkeydown = function (event) {
     let key = event.key;
 
-    if (key === 'p' || key === 'Escape') {
+    if ((key === 'p' || key === 'Escape') && !spaceshipGame.gameOver) {
         spaceshipGame.togglePaused();
     }
     if (key === 'j' || key === 'z' || key === ' ') {

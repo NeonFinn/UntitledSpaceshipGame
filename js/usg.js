@@ -619,7 +619,6 @@ SpaceshipGame.prototype = {
 
                 // draw sprite
                 sprite.draw(this.context);
-                sprite.drawCollisionRectangle(this.context);
                 this.context.translate(sprite.hOffset, 0);
             }
         }

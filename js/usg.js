@@ -106,7 +106,6 @@ let SpaceshipGame = function () {
             this.setPosition(sprite, now, lastAnimationFrameTime);
         }
     };
-
     this.collideBehavior = {
         isCandidateForCollision: function (sprite, otherSprite) {
             let spriteCollisionRect = sprite.calculateCollisionRectangle();
@@ -289,6 +288,7 @@ SpaceshipGame.prototype = {
     start: function () {
         this.revealGame();
         this.revealInitialToast();
+        this.musicPlay();''
         requestAnimationFrame(this.animate);
     },
 
@@ -304,7 +304,21 @@ SpaceshipGame.prototype = {
             spaceshipGame.revealTopChrome();
         }, DIM_CONTROLS_DELAY);
     },
-
+    musicPlay: function () {
+        const music = new Audio('images/Sound_Effects/Finalboss.mp3');
+        const musicCheck = document.getElementById('music-checkbox');
+        if(musicCheck.checked){
+           if(music.paused){
+            music.play();
+            console.log("Music is attempting to play")
+            } 
+        }
+        else if(musicCheck.unchecked){
+            music.pause();
+            console.log("The music isnt playing for some reason")
+        }
+        
+    },
     revealTopChromeDimmed: function () {
         let DIM = 0.25;
 
@@ -703,6 +717,7 @@ SpaceshipGame.prototype = {
         this.resetSprites();
         this.updateHealthDisplay();
         this.updatePowerUpDisplay();
+        this.musicPlay();
         this.togglePaused();
         this.score = 0;
         this.scoreElement.innerHTML = this.score;

@@ -181,7 +181,7 @@ let SpaceshipGame = function () {
 
             if (otherSprite.health <= 0) {
                 otherSprite.visible = false;
-                createExplosions(spaceshipGame, otherSprite.left - otherSprite.hOffset, otherSprite.top);
+                createExplosions(spaceshipGame, otherSprite);
                 spaceshipGame.awardPoints(otherSprite);
                 console.log("Enemy destroyed!");
             }

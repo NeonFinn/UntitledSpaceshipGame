@@ -1443,6 +1443,17 @@ SpriteSheetArtist.prototype = {
     draw: function (sprite, context) {
         let cell = this.cells[this.cellIndex];
 
+        if (sprite.type === 'explosion') {
+            context.save();
+
+            context.translate(-cell.width / 2, -cell.height / 2);
+            context.drawImage(this.spritesheet, cell.left, cell.top, cell.width, cell.height, sprite.left, sprite.top, cell.width, cell.height);
+
+            context.restore();
+
+            return;
+        }
+
         if (this.rotation === 0) {
             context.drawImage(this.spritesheet, cell.left, cell.top, cell.width, cell.height, sprite.left, sprite.top, cell.width, cell.height);
             return;

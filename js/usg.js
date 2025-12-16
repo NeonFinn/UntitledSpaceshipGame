@@ -286,6 +286,12 @@ SpaceshipGame.prototype = {
             }
         }, fadeDuration);
     },
+    soundPlay: function () {
+        this.sound = new Audio('images/Sound_Effects/Finalboss.mp3');
+    },
+    soundCheckInt: function () {
+
+    },
     musicPlay: function () {
         this.music = new Audio('images/Sound_Effects/Finalboss.mp3');
         this.musicCheck = document.getElementById('music-checkbox');
@@ -676,6 +682,7 @@ SpaceshipGame.prototype = {
             this.resetGame();
         }, RESET_DELAY + 500);
     },
+
 
     updatePowerUpDisplay: function () {
         let speedDisplay = ['D', 'E', 'F'][this.player.movementStage];

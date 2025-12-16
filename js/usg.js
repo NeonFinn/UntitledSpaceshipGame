@@ -284,26 +284,6 @@ SpaceshipGame.prototype = {
             }
         }, fadeDuration);
     },
-
-    start: function () {
-        this.revealGame();
-        this.revealInitialToast();
-        this.musicPlay();''
-        requestAnimationFrame(this.animate);
-    },
-
-    revealGame: function () {
-        let DIM_CONTROLS_DELAY = 5000;
-
-        this.revealTopChromeDimmed();
-        this.revealCanvas();
-        this.revealBottomChrome();
-
-        setTimeout(function () {
-            spaceshipGame.dimControls();
-            spaceshipGame.revealTopChrome();
-        }, DIM_CONTROLS_DELAY);
-    },
     musicPlay: function () {
         const music = new Audio('images/Sound_Effects/Finalboss.mp3');
         const musicCheck = document.getElementById('music-checkbox');
@@ -319,6 +299,26 @@ SpaceshipGame.prototype = {
         }
         
     },
+    start: function () {
+        this.revealGame();
+        this.revealInitialToast();
+        this.musicPlay();
+        requestAnimationFrame(this.animate);
+    },
+
+    revealGame: function () {
+        let DIM_CONTROLS_DELAY = 5000;
+
+        this.revealTopChromeDimmed();
+        this.revealCanvas();
+        this.revealBottomChrome();
+
+        setTimeout(function () {
+            spaceshipGame.dimControls();
+            spaceshipGame.revealTopChrome();
+        }, DIM_CONTROLS_DELAY);
+    },
+    
     revealTopChromeDimmed: function () {
         let DIM = 0.25;
 

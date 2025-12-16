@@ -26,7 +26,7 @@ let SpaceshipGame = function () {
     this.PAUSED_CHECK_INTERVAL = 200;
     this.SHOTS_INTERVAL = 500;
     this.SHORT_DELAY = 50; // lmao
-
+    this.EXPLOSION_CYCLE_DURATION = 50;
     this.POWER_UP_CYCLE_DURATION = 100;
 
     // Score information
@@ -181,6 +181,7 @@ let SpaceshipGame = function () {
 
             if (otherSprite.health <= 0) {
                 otherSprite.visible = false;
+                createExplosions(spaceshipGame, otherSprite.left - otherSprite.hOffset, otherSprite.top);
                 spaceshipGame.awardPoints(otherSprite);
                 console.log("Enemy destroyed!");
             }

@@ -9,7 +9,7 @@ ExplosionBehavior.prototype = {
     },
 }
 function createExplosions(game,left,top){
-    let explosion = createSprite('explosion',0, [new CycleBehavior(game.EXPLOSION_CYCLE_DURATION, 0), new ExplosionBehavior()])
+    let explosion = createSprite('explosion',0, [new CycleBehavior(game.EXPLOSION_CYCLE_DURATION), new ExplosionBehavior()])
     explosion.left = left;
     explosion.top = top;
     game.sprites.push(explosion);

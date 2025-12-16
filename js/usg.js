@@ -307,13 +307,13 @@ SpaceshipGame.prototype = {
     musicPlay: function () {
         const music = new Audio('images/Sound_Effects/Finalboss.mp3');
         const musicCheck = document.getElementById('music-checkbox');
-        if(musicCheck.checked){
+        if(musicCheck.checked == true){
            if(music.paused){
             music.play();
             console.log("Music is attempting to play")
             } 
         }
-        else if(musicCheck.unchecked){
+        else if(musicCheck.checked == false){
             music.pause();
             console.log("The music isnt playing for some reason")
         }

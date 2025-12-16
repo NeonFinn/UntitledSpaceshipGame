@@ -225,6 +225,7 @@ SpaceshipGame.prototype = {
     load: function () {
         this.initializeImages();
         this.createSprites();
+        this.musicPlay()
     },
 
     initializeImages: function () {
@@ -285,24 +286,25 @@ SpaceshipGame.prototype = {
         }, fadeDuration);
     },
     musicPlay: function () {
-        const music = new Audio('images/Sound_Effects/Finalboss.mp3');
-        const musicCheck = document.getElementById('music-checkbox');
-        if(musicCheck.checked == true){
-           if(music.paused){
-            music.play();
-            console.log("Music is attempting to play")
+        this.music = new Audio('images/Sound_Effects/Finalboss.mp3');
+        this.musicCheck = document.getElementById('music-checkbox');
+        const musicInterval = setInterval(() => {this.musicCheckInt()}, 1000);
+    },
+    musicCheckInt: function (){
+    let musicPlaying = true;
+        if(this.musicCheck.checked == true){
+           if(this.music.paused){
+            this.music.play();
             } 
         }
-        else if(musicCheck.checked == false){
-            music.pause();
-            console.log("The music isnt playing for some reason")
+        else if(this.musicCheck.checked == false){
+            this.music.pause();
         }
-        
     },
     start: function () {
         this.revealGame();
         this.revealInitialToast();
-        this.musicPlay();
+        
         requestAnimationFrame(this.animate);
     },
 
@@ -316,6 +318,7 @@ SpaceshipGame.prototype = {
         setTimeout(function () {
             spaceshipGame.dimControls();
             spaceshipGame.revealTopChrome();
+            
         }, DIM_CONTROLS_DELAY);
     },
     
@@ -716,7 +719,6 @@ SpaceshipGame.prototype = {
         this.resetSprites();
         this.updateHealthDisplay();
         this.updatePowerUpDisplay();
-        this.musicPlay();
         this.togglePaused();
         this.score = 0;
         this.scoreElement.innerHTML = this.score;
